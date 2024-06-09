@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">KuizyJava-PBO2024</string>
+    <string name="logo">Logo</string>
+    <string name="pintar_bersama_kuizy">Pintar Bersama Kuizy</string>
+    <string name="mulai">Mulai</string>
+    <string name="kuizy_adalah_aplikasi_quis_yang_diciptakan_untuk_memberikan_test_kepada_para_siswa_sebelum_masuk_ke_dalam_aplikasi_harap_register_terlebih_dahulu">Kuizy adalah aplikasi quis yang diciptakan untuk memberikan test kepada para siswa. Sebelum masuk ke dalam aplikasi, harap register terlebih dahulu.</string>
+    <string name="buat_akun">Buat Akun</string>
+    <string name="belum_punya_akun">Belum punya akun?</string>
+    <string name="masuk">Masuk</string>
+    <string name="password">password</string>
+    <string name="username">username</string>
+    <string name="silahkan_login_terlebih_dahulu">Silahkan login terlebih dahulu</string>
+    <string name="title_activity_beranda">BerandaActivity</string>
+    <string name="login">Login</string>
+    <string name="email">email</string>
+    <string name="silahkan_buat_akun_terlebih_dahulu">Silahkan buat akun terlebih dahulu</string>
+    <string name="buat_akun_uppercase">BUAT AKUN</string>
+    <string name="profile">profile</string>
+    <string name="beranda">Beranda</string>
+</resources>
