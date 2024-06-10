@@ -87,7 +87,7 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="580dp"
+            android:layout_height="520dp"
             android:background="@drawable/rounded_beranda" />
 
         <TextView
@@ -105,7 +105,7 @@
 
         <ImageButton
             android:layout_width="match_parent"
-            android:layout_height="135dp"
+            android:layout_height="115dp"
             android:background="@drawable/rounded_menu_button"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="65dp"
@@ -120,7 +120,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:layout_marginEnd="12dp"
-            android:layout_marginTop="208dp"
+            android:layout_marginTop="190dp"
             android:columnCount="2"
             android:rowCount="2"
             android:useDefaultMargins="true"
@@ -129,7 +129,7 @@
 
             <ImageView
                 android:layout_width="0dp"
-                android:layout_height="135dp"
+                android:layout_height="115dp"
                 android:layout_row="0"
                 android:layout_column="0"
                 android:layout_marginEnd="5dp"
@@ -138,7 +138,7 @@
 
             <ImageView
                 android:layout_width="0dp"
-                android:layout_height="135dp"
+                android:layout_height="115dp"
                 android:layout_row="0"
                 android:layout_column="1"
                 android:layout_marginStart="5dp"
@@ -147,7 +147,7 @@
 
             <ImageView
                 android:layout_width="0dp"
-                android:layout_height="135dp"
+                android:layout_height="115dp"
                 android:layout_row="1"
                 android:layout_marginEnd="5dp"
                 android:layout_column="0"
@@ -156,7 +156,7 @@
 
             <ImageView
                 android:layout_width="0dp"
-                android:layout_height="135dp"
+                android:layout_height="115dp"
                 android:layout_row="1"
                 android:layout_column="1"
                 android:layout_marginStart="5dp"
