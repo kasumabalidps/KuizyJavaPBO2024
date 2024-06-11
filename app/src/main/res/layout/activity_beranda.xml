@@ -8,7 +8,7 @@
     android:background="#1E1B4B"
     tools:context=".BerandaActivity">
 
-    <ImageView
+    <pl.droidsonroids.gif.GifImageView
         android:id="@+id/imageView4"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -349,8 +349,5 @@
             app:itemIconTint="@color/color_menu"
             app:itemTextColor="@color/color_menu"
             app:menu="@menu/bottom_navigation_menu" />
-
     </FrameLayout>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,7 @@
 package com.example.kuizyjava_pbo2024;
 
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +16,9 @@ public class BerandaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_beranda);
+
+        // Set status bar ke putih
+        // getWindow().setStatusBarColor(getResources().getColor(android.R.color.white));
 
         // Sembunyiin ActionBar di Atas
         if (getSupportActionBar() != null) {

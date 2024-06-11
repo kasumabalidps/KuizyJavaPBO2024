@@ -1,15 +1,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/navigation_home"
-        android:icon="@drawable/gambar1" />
+        android:icon="@drawable/home_icon" />
     <item
-        android:id="@+id/navigation_dashboard"
-        android:icon="@drawable/gambar1" />
+        android:id="@+id/navigation_quiz"
+        android:icon="@drawable/quiz_icon" />
     <item
-        android:id="@+id/navigation_notifications"
-        android:icon="@drawable/gambar1" />
+        android:id="@+id/navigation_level"
+        android:icon="@drawable/level_icon" />
     <item
-        android:id="@+id/navigation_profile"
-        android:icon="@drawable/gambar1"
+        android:id="@+id/navigation_setting"
+        android:icon="@drawable/setting_icon"
         />
 </menu>

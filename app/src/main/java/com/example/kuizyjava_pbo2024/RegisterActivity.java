@@ -54,11 +54,11 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(RegisterActivity.this, "Password tidak sama!!", Toast.LENGTH_SHORT).show();
                 } else {
                     // Nama Child di dalam users
-                    DatabaseReference users = database.child(username);
+                    DatabaseReference usersChildName = database.child(username);
 
-                    users.child("email").setValue(email);
-                    users.child("username").setValue(username);
-                    users.child("password").setValue(password);
+                    usersChildName.child("email").setValue(email);
+                    usersChildName.child("username").setValue(username);
+                    usersChildName.child("password").setValue(password);
 
                     Toast.makeText(RegisterActivity.this, "Berhasil mendaftar", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
