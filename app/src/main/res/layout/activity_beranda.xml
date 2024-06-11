@@ -8,6 +8,20 @@
     android:background="#1E1B4B"
     tools:context=".BerandaActivity">
 
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:src="@drawable/bg_beranda"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        app:layout_constraintDimensionRatio="H,16:9"
+        app:layout_constraintBottom_toTopOf="@+id/frame_layout"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+
     <TextView
         android:id="@+id/titleText"
         android:layout_width="wrap_content"
@@ -38,6 +52,7 @@
         app:layout_constraintVertical_bias="0.306" />
 
     <ImageButton
+        android:id="@+id/imageButton"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="18dp"
@@ -64,6 +79,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <FrameLayout
+        android:id="@+id/frameLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -132,33 +148,32 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_gravity="center"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
                 <ImageButton
                     android:id="@+id/leftImageButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/gambar1"
-                    android:background="@null"
                     android:layout_marginEnd="10dp"
                     android:adjustViewBounds="true"
-                    />
+                    android:background="@null"
+                    android:src="@drawable/gambar1" />
 
                 <TextView
                     android:id="@+id/quizText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Mulai Quiz"
                     android:fontFamily="@font/poppins_semibold"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
                     android:gravity="center_vertical"
-                    />
+                    android:text="Mulai Quiz"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
             </LinearLayout>
 
         </FrameLayout>
+
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -183,29 +198,27 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
                     android:layout_gravity="center"
-                    android:gravity="center_horizontal|center_vertical">
+                    android:gravity="center_horizontal|center_vertical"
+                    android:orientation="vertical">
 
                     <ImageButton
                         android:id="@+id/leftImageButton1"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:src="@drawable/gambar1"
-                        android:background="@null"
                         android:layout_marginBottom="5dp"
+                        android:background="@null"
                         android:scaleType="centerInside"
-                        />
+                        android:src="@drawable/gambar1" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Peraturan"
                         android:fontFamily="@font/poppins_semibold"
-                        android:textColor="@color/white"
-                        android:textSize="20sp"
                         android:gravity="center_horizontal"
-                        />
+                        android:text="Peraturan"
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
                 </LinearLayout>
             </FrameLayout>
 
@@ -216,30 +229,31 @@
                 android:layout_column="1"
                 android:layout_columnWeight="1"
                 android:background="@drawable/rounded_menu_button">
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
                     android:layout_gravity="center"
-                    android:gravity="center_horizontal|center_vertical">
+                    android:gravity="center_horizontal|center_vertical"
+                    android:orientation="vertical">
+
                     <ImageButton
                         android:id="@+id/leftImageButton1"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:src="@drawable/gambar1"
-                        android:background="@null"
                         android:layout_marginBottom="5dp"
+                        android:background="@null"
                         android:scaleType="centerInside"
-                        />
+                        android:src="@drawable/gambar1" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Peraturan"
                         android:fontFamily="@font/poppins_semibold"
-                        android:textColor="@color/white"
-                        android:textSize="20sp"
                         android:gravity="center_horizontal"
-                        />
+                        android:text="Peraturan"
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
                 </LinearLayout>
             </FrameLayout>
 
@@ -255,29 +269,27 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
                     android:layout_gravity="center"
-                    android:gravity="center_horizontal|center_vertical">
+                    android:gravity="center_horizontal|center_vertical"
+                    android:orientation="vertical">
 
                     <ImageButton
                         android:id="@+id/leftImageButton1"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:src="@drawable/gambar1"
-                        android:background="@null"
                         android:layout_marginBottom="5dp"
+                        android:background="@null"
                         android:scaleType="centerInside"
-                        />
+                        android:src="@drawable/gambar1" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Peraturan"
                         android:fontFamily="@font/poppins_semibold"
-                        android:textColor="@color/white"
-                        android:textSize="20sp"
                         android:gravity="center_horizontal"
-                        />
+                        android:text="Peraturan"
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
                 </LinearLayout>
             </FrameLayout>
 
@@ -288,32 +300,31 @@
                 android:layout_column="1"
                 android:layout_columnWeight="1"
                 android:background="@drawable/rounded_menu_button">
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
                     android:layout_gravity="center"
-                    android:gravity="center_horizontal|center_vertical">
+                    android:gravity="center_horizontal|center_vertical"
+                    android:orientation="vertical">
 
                     <ImageButton
                         android:id="@+id/leftImageButton1"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:src="@drawable/gambar1"
-                        android:background="@null"
                         android:layout_marginBottom="5dp"
+                        android:background="@null"
                         android:scaleType="centerInside"
-                        />
+                        android:src="@drawable/gambar1" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Peraturan"
                         android:fontFamily="@font/poppins_semibold"
-                        android:textColor="@color/white"
-                        android:textSize="20sp"
                         android:gravity="center_horizontal"
-                        />
+                        android:text="Peraturan"
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
                 </LinearLayout>
             </FrameLayout>
         </GridLayout>
@@ -321,8 +332,7 @@
 
     <!--Nav Menu-->
     <FrameLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/frameLayout2"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -335,15 +345,12 @@
             android:layout_gravity="bottom"
             android:backgroundTint="@android:color/white"
             android:elevation="10dp"
-            app:menu="@menu/bottom_navigation_menu"
             app:itemIconSize="32dp"
             app:itemIconTint="@color/color_menu"
-            app:itemTextColor="@color/color_menu" />
+            app:itemTextColor="@color/color_menu"
+            app:menu="@menu/bottom_navigation_menu" />
 
     </FrameLayout>
-
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
