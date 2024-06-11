@@ -31,8 +31,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     // Click arah ke Register
-    public void onBuatAkunClick(View view) {
-        Intent intent = new Intent(this, RegisterActivity.class);
-        startActivity(intent);
+    public void onBuatAkunClick(View v) {
+        Intent register = new Intent(this, RegisterActivity.class);
+        startActivity(register);
     }
 }

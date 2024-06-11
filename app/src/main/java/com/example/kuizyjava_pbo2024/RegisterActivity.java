@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,27 +18,26 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterActivity extends AppCompatActivity {
-
     // Ambil nama ID dari layout
     private EditText etUsername, etEmail, etPassword, etConfirmPassword;
-    private Button btnRegister;
-    private DatabaseReference fireRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_register);
+        Button btnRegister = findViewById(R.id.btnRegister);
 
         // Mencari ID dari layout
         etUsername = findViewById(R.id.etUsername);
         etEmail = findViewById(R.id.etEmail);
         etPassword = findViewById(R.id.etPassword);
         etConfirmPassword = findViewById(R.id.etConfirmPassword);
-        btnRegister = findViewById(R.id.btnRegister);
 
         // Firebase Database Reference
-        fireRef = FirebaseDatabase.getInstance().getReferenceFromUrl("https://kuizy-pbo2024-default-rtdb.asia-southeast1.firebasedatabase.app/");
+        FirebaseDatabase.getInstance().getReferenceFromUrl("https://kuizy-pbo2024-default-rtdb.asia-southeast1.firebasedatabase.app/");
+        // Mendapatkan Database Users
+        DatabaseReference database = FirebaseDatabase.getInstance().getReference("users");
 
         // Btn Listener Register
         btnRegister.setOnClickListener(new View.OnClickListener() {
@@ -47,6 +47,24 @@ public class RegisterActivity extends AppCompatActivity {
                 String username = etUsername.getText().toString().trim();
                 String password = etPassword.getText().toString().trim();
                 String confirmPassword = etConfirmPassword.getText().toString().trim();
+
+                if (email.isEmpty() || username.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
+                    Toast.makeText(RegisterActivity.this, "Mohon lengkapi form", Toast.LENGTH_SHORT).show();
+                } else if (!password.equals(confirmPassword)) {
+                    Toast.makeText(RegisterActivity.this, "Password tidak sama!!", Toast.LENGTH_SHORT).show();
+                } else {
+                    // Nama Child di dalam users
+                    DatabaseReference users = database.child(username);
+
+                    users.child("email").setValue(email);
+                    users.child("username").setValue(username);
+                    users.child("password").setValue(password);
+
+                    Toast.makeText(RegisterActivity.this, "Berhasil mendaftar", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
             }
         });
 
