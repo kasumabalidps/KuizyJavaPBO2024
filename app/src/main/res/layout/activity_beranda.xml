@@ -12,11 +12,11 @@
         android:id="@+id/text1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/poppins_bold"
         android:text="@string/beranda"
         android:textColor="@color/white"
         android:textSize="30sp"
-        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,11 +27,11 @@
         android:id="@+id/text2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="68dp"
         android:fontFamily="@font/poppins_regular"
         android:text="Halo, user"
         android:textColor="@color/white"
         android:textSize="18sp"
-        android:layout_marginTop="68dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -40,12 +40,12 @@
     <ImageButton
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:contentDescription="@string/profile"
-        android:src="@drawable/img"
-        android:background="@android:color/transparent"
-        android:scaleType="fitCenter"
         android:layout_marginTop="18dp"
         android:layout_marginEnd="12dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/profile"
+        android:scaleType="fitCenter"
+        android:src="@drawable/img"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
@@ -66,10 +66,10 @@
     <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/text2"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="10dp">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text2">
 
         <ImageView
             android:id="@+id/imageview_circle"
@@ -82,10 +82,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="5"
-            android:fontFamily="@font/poppins_bold"
-            android:textColor="@android:color/black"
             android:layout_marginTop="2dp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="5"
+            android:textColor="@android:color/black"
             android:textSize="25sp"
             android:textStyle="bold" />
 
@@ -96,11 +96,10 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="125dp"
-        app:layout_constraintTop_toBottomOf="@id/text2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        >
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text2">
 
         <ImageView
             android:layout_width="match_parent"
@@ -120,66 +119,234 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageButton
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="115dp"
-            android:background="@drawable/rounded_menu_button"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="65dp"
+            android:layout_height="125dp"
             android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp" />
+            android:layout_marginTop="65dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/rounded_menu_button">
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:gravity="center_vertical">
+
+                <ImageButton
+                    android:id="@+id/leftImageButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/gambar1"
+                    android:background="@null"
+                    android:layout_marginEnd="10dp"
+                    android:adjustViewBounds="true"
+                    />
+
+                <TextView
+                    android:id="@+id/quizText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mulai Quiz"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:gravity="center_vertical"
+                    />
+            </LinearLayout>
+
+        </FrameLayout>
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
+            android:layout_marginTop="200dp"
             android:layout_marginEnd="12dp"
-            android:layout_marginTop="190dp"
-            android:columnCount="2"
-            android:rowCount="2"
-            android:useDefaultMargins="true"
             android:alignmentMode="alignMargins"
-            android:columnOrderPreserved="false">
+            android:columnCount="2"
+            android:columnOrderPreserved="false"
+            android:rowCount="2"
+            android:useDefaultMargins="true">
 
-            <ImageView
+            <FrameLayout
                 android:layout_width="0dp"
-                android:layout_height="115dp"
+                android:layout_height="125dp"
                 android:layout_row="0"
                 android:layout_column="0"
-                android:layout_marginEnd="5dp"
                 android:layout_columnWeight="1"
-                android:src="@drawable/rounded_menu_button" />
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/rounded_menu_button">
 
-            <ImageView
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_gravity="center"
+                    android:gravity="center_horizontal|center_vertical">
+
+                    <ImageButton
+                        android:id="@+id/leftImageButton1"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/gambar1"
+                        android:background="@null"
+                        android:layout_marginBottom="5dp"
+                        android:scaleType="centerInside"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Peraturan"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:gravity="center_horizontal"
+                        />
+                </LinearLayout>
+            </FrameLayout>
+
+            <FrameLayout
                 android:layout_width="0dp"
-                android:layout_height="115dp"
+                android:layout_height="125dp"
                 android:layout_row="0"
                 android:layout_column="1"
-                android:layout_marginStart="5dp"
                 android:layout_columnWeight="1"
-                android:src="@drawable/rounded_menu_button" />
+                android:layout_marginstart="10dp"
+                android:background="@drawable/rounded_menu_button">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_gravity="center"
+                    android:gravity="center_horizontal|center_vertical">
+                    <ImageButton
+                        android:id="@+id/leftImageButton1"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/gambar1"
+                        android:background="@null"
+                        android:layout_marginBottom="5dp"
+                        android:scaleType="centerInside"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Peraturan"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:gravity="center_horizontal"
+                        />
+                </LinearLayout>
+            </FrameLayout>
 
-            <ImageView
+            <FrameLayout
                 android:layout_width="0dp"
-                android:layout_height="115dp"
+                android:layout_height="125dp"
                 android:layout_row="1"
-                android:layout_marginEnd="5dp"
                 android:layout_column="0"
                 android:layout_columnWeight="1"
-                android:src="@drawable/rounded_menu_button" />
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/rounded_menu_button">
 
-            <ImageView
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_gravity="center"
+                    android:gravity="center_horizontal|center_vertical">
+
+                    <ImageButton
+                        android:id="@+id/leftImageButton1"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/gambar1"
+                        android:background="@null"
+                        android:layout_marginBottom="5dp"
+                        android:scaleType="centerInside"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Peraturan"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:gravity="center_horizontal"
+                        />
+                </LinearLayout>
+            </FrameLayout>
+
+            <FrameLayout
                 android:layout_width="0dp"
-                android:layout_height="115dp"
+                android:layout_height="125dp"
                 android:layout_row="1"
                 android:layout_column="1"
-                android:layout_marginStart="5dp"
                 android:layout_columnWeight="1"
-                android:src="@drawable/rounded_menu_button" />
+                android:layout_marginstart="10dp"
+                android:background="@drawable/rounded_menu_button">
 
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_gravity="center"
+                    android:gravity="center_horizontal|center_vertical">
+
+                    <ImageButton
+                        android:id="@+id/leftImageButton1"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/gambar1"
+                        android:background="@null"
+                        android:layout_marginBottom="5dp"
+                        android:scaleType="centerInside"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Peraturan"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:gravity="center_horizontal"
+                        />
+                </LinearLayout>
+            </FrameLayout>
         </GridLayout>
     </FrameLayout>
+
+    <!--Nav Menu-->
+    <FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- Your main content goes here -->
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:backgroundTint="@android:color/white"
+            android:elevation="10dp"
+            app:menu="@menu/bottom_navigation_menu"
+            app:itemIconSize="32dp"
+            app:itemIconTint="@color/color_menu"
+            app:itemTextColor="@color/color_menu" />
+
+    </FrameLayout>
+
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
