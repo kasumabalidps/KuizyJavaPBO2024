@@ -1,6 +1,8 @@
 [versions]
 agp = "8.4.1"
+authKtx = "0.8.0"
 cardview = "1.0.0"
+googleServices = "4.4.2"
 junit = "4.13.2"
 junitVersion = "1.1.5"
 espressoCore = "3.5.1"
@@ -15,7 +17,9 @@ composeBom = "2023.08.00"
 materialVersion = "1.5.0"
 
 [libraries]
+auth-ktx = { module = "io.github.jan-tennert.supabase:auth-ktx", version.ref = "authKtx" }
 cardview = { module = "androidx.cardview:cardview", version.ref = "cardview" }
+google-services = { module = "com.google.gms:google-services", version.ref = "googleServices" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -27,6 +31,7 @@ lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtim
 activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
 compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
 material-v150 = { module = "com.google.android.material:material", version.ref = "materialVersion" }
+postgrest-ktx = { module = "io.github.jan-tennert.supabase:postgrest-ktx", version.ref = "authKtx" }
 ui = { group = "androidx.compose.ui", name = "ui" }
 ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
 ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }

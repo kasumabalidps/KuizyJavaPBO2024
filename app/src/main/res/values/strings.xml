@@ -18,4 +18,6 @@
     <string name="profile">profile</string>
     <string name="beranda">Beranda</string>
     <string name="menu">Menu</string>
+    <string name="selamat_datang">SELAMAT DATANG</string>
+    <string name="confirm_password">Confirm Password</string>
 </resources>
