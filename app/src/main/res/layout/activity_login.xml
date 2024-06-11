@@ -9,7 +9,7 @@
     tools:context=".LoginActivity">
 
     <TextView
-        android:id="@+id/text1"
+        android:id="@+id/titleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_bold"
@@ -24,7 +24,7 @@
         app:layout_constraintVertical_bias="0.24" />
 
     <TextView
-        android:id="@+id/text2"
+        android:id="@+id/subText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="92dp"
@@ -40,7 +40,7 @@
         app:layout_constraintVertical_bias="0.306" />
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/etUsername"
         android:layout_width="350dp"
         android:layout_height="48dp"
         android:layout_marginStart="16dp"
@@ -54,10 +54,10 @@
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text2" />
+        app:layout_constraintTop_toBottomOf="@id/subText" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/etPassword"
         android:layout_width="350dp"
         android:layout_height="48dp"
         android:layout_marginStart="16dp"
@@ -73,10 +73,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text2" />
+        app:layout_constraintTop_toBottomOf="@id/subText" />
 
     <Button
-        android:id="@+id/button_login"
+        android:id="@+id/btnMasuk"
         android:layout_width="300dp"
         android:layout_height="58dp"
         android:layout_marginTop="7mm"
@@ -84,13 +84,13 @@
         android:fontFamily="@font/poppins_semibold"
         android:textSize="16sp"
         android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@id/editText2"
+        app:layout_constraintTop_toBottomOf="@id/etPassword"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="InOrMmUsage" />
 
     <TextView
-        android:id="@+id/text3"
+        android:id="@+id/smallText1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -100,25 +100,26 @@
         android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/textHalo"
+        app:layout_constraintEnd_toStartOf="@id/smallText2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintHorizontal_chainStyle="packed" />
 
     <TextView
-        android:id="@+id/textHalo"
+        android:id="@+id/smallText2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="28dp"
         android:layout_marginStart="5dp"
-        android:text="@string/buat_akun"
+        android:layout_marginBottom="28dp"
+        android:clickable="true"
         android:fontFamily="@font/poppins_bold"
+        android:onClick="onBuatAkunClick"
+        android:text="@string/buat_akun"
         android:textColor="@color/white"
         android:textSize="18sp"
-        android:clickable="true"
-        android:onClick="onBuatAkunClick"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/text3"
-        app:layout_constraintTop_toTopOf="@id/text3" />
+        app:layout_constraintStart_toEndOf="@id/smallText1"
+        app:layout_constraintTop_toTopOf="@id/smallText1"
+        tools:ignore="TouchTargetSizeCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

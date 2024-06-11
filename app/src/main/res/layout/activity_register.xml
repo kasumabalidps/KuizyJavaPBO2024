@@ -11,7 +11,7 @@
     tools:layout_editor_absoluteY="-46dp">
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/etUsername"
         android:layout_width="350dp"
         android:layout_height="46dp"
         android:layout_marginStart="16dp"
@@ -27,10 +27,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text2" />
+        app:layout_constraintTop_toBottomOf="@id/subText" />
 
     <TextView
-        android:id="@+id/text1"
+        android:id="@+id/titleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_bold"
@@ -44,7 +44,7 @@
         app:layout_constraintVertical_bias="0.128" />
 
     <TextView
-        android:id="@+id/text2"
+        android:id="@+id/subText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="92dp"
@@ -61,7 +61,7 @@
         app:layout_constraintVertical_bias="0.201" />
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/etEmail"
         android:layout_width="350dp"
         android:layout_height="46dp"
         android:layout_marginStart="16dp"
@@ -76,10 +76,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text2" />
+        app:layout_constraintTop_toBottomOf="@id/subText" />
 
     <EditText
-        android:id="@+id/editTextConfirmPassword"
+        android:id="@+id/etConfirmPassword"
         android:layout_width="350dp"
         android:layout_height="46dp"
         android:layout_marginStart="16dp"
@@ -95,7 +95,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text2" />
+        app:layout_constraintTop_toBottomOf="@id/subText" />
 
     <Button
         android:id="@+id/button_register"
@@ -109,11 +109,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editText2"
+        app:layout_constraintTop_toBottomOf="@id/etUsername"
         tools:ignore="InOrMmUsage" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/etPassword"
         android:layout_width="350dp"
         android:layout_height="46dp"
         android:layout_marginStart="16dp"
@@ -129,10 +129,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text2" />
+        app:layout_constraintTop_toBottomOf="@id/subText" />
 
     <TextView
-        android:id="@+id/text3"
+        android:id="@+id/smallText1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -142,12 +142,12 @@
         android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/textHalo"
+        app:layout_constraintEnd_toStartOf="@id/smallText2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintHorizontal_chainStyle="packed" />
 
     <TextView
-        android:id="@+id/textHalo"
+        android:id="@+id/smallText2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="28dp"
@@ -159,7 +159,7 @@
         android:onClick="onLoginClick"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/text3"
-        app:layout_constraintTop_toTopOf="@id/text3" />
+        app:layout_constraintStart_toEndOf="@id/smallText1"
+        app:layout_constraintTop_toTopOf="@id/smallText1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
