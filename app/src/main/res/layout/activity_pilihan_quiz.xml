@@ -36,19 +36,20 @@
 
         <!-- Layout untuk ImageButton dan TextView -->
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="22dp"
             android:layout_marginTop="22dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
 
             <ImageButton
                 android:id="@+id/backButton"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:layout_marginEnd="10dp"
-                android:background="#000000000"
-                android:src="@drawable/arrow_left" />
+                android:background="@null"
+                android:src="@drawable/ic_back" />
 
             <TextView
                 android:id="@+id/menu_text"
@@ -121,8 +122,8 @@
 
                     <ImageButton
                         android:id="@+id/secondImageButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="70dp"
+                        android:layout_height="69dp"
                         android:layout_marginEnd="10dp"
                         android:adjustViewBounds="true"
                         android:background="@null"
@@ -156,8 +157,8 @@
 
                     <ImageButton
                         android:id="@+id/thirdImageButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
                         android:layout_marginEnd="10dp"
                         android:adjustViewBounds="true"
                         android:background="@null"
@@ -191,8 +192,8 @@
 
                     <ImageButton
                         android:id="@+id/fourthImageButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
                         android:layout_marginEnd="10dp"
                         android:adjustViewBounds="true"
                         android:background="@null"
