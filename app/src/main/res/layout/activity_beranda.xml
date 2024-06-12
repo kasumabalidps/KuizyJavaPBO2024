@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/poppins_bold"
-        android:text="@string/beranda"
+        android:text="@string/kuizy"
         android:textColor="@color/white"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -137,7 +137,7 @@
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="145dp"
+            android:layout_height="115dp"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="65dp"
@@ -186,7 +186,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
-            android:layout_marginTop="225dp"
+            android:layout_marginTop="190dp"
             android:layout_marginEnd="12dp"
             android:alignmentMode="alignMargins"
             android:columnCount="2"
@@ -196,7 +196,7 @@
 
             <FrameLayout
                 android:layout_width="0dp"
-                android:layout_height="145dp"
+                android:layout_height="115dp"
                 android:layout_row="0"
                 android:layout_column="0"
                 android:layout_columnWeight="1"
@@ -240,7 +240,7 @@
 
             <FrameLayout
                 android:layout_width="0dp"
-                android:layout_height="145dp"
+                android:layout_height="115dp"
                 android:layout_row="0"
                 android:layout_column="1"
                 android:layout_columnWeight="1"
@@ -284,7 +284,7 @@
 
             <FrameLayout
                 android:layout_width="0dp"
-                android:layout_height="145dp"
+                android:layout_height="115dp"
                 android:layout_row="1"
                 android:layout_column="0"
                 android:layout_columnWeight="1"
@@ -328,7 +328,7 @@
 
             <FrameLayout
                 android:layout_width="0dp"
-                android:layout_height="145dp"
+                android:layout_height="115dp"
                 android:layout_row="1"
                 android:layout_column="1"
                 android:layout_columnWeight="1"
