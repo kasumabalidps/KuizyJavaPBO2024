@@ -1,5 +1,5 @@
 [versions]
-agp = "8.4.1"
+agp = "8.4.2"
 androidGifDrawable = "1.2.25"
 authKtx = "0.8.0"
 cardview = "1.0.0"
