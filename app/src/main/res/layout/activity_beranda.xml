@@ -228,6 +228,7 @@
                 android:layout_row="0"
                 android:layout_column="1"
                 android:layout_columnWeight="1"
+                android:layout_marginStart="5dp"
                 android:background="@drawable/rounded_menu_button">
 
                 <LinearLayout
@@ -238,7 +239,7 @@
                     android:orientation="vertical">
 
                     <ImageButton
-                        android:id="@+id/leftImageButton1"
+                        android:id="@+id/leftImageButton2"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:layout_marginBottom="5dp"
@@ -299,6 +300,7 @@
                 android:layout_row="1"
                 android:layout_column="1"
                 android:layout_columnWeight="1"
+                android:layout_marginStart="5dp"
                 android:background="@drawable/rounded_menu_button">
 
                 <LinearLayout
