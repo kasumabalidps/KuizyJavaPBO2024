@@ -330,16 +330,7 @@
                 </LinearLayout>
             </FrameLayout>
         </GridLayout>
-    </FrameLayout>
-
-    <!--Nav Menu-->
-    <FrameLayout
-        android:id="@+id/frameLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <!-- Your main content goes here -->
-
+        <!--Nav Menu-->
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_navigation"
             android:layout_width="match_parent"

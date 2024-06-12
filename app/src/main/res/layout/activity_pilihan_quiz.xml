@@ -49,7 +49,7 @@
                 android:layout_height="24dp"
                 android:layout_marginEnd="10dp"
                 android:background="@null"
-                android:src="@drawable/ic_back" />
+                android:src="@drawable/arrow_left" />
 
             <TextView
                 android:id="@+id/menu_text"
@@ -73,8 +73,8 @@
 
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="145dp"
-                android:layout_marginBottom="20dp"
+                android:layout_height="125dp"
+                android:layout_marginBottom="15dp"
                 android:layout_marginTop="60dp"
                 android:background="@drawable/rounded_menu_button">
 
@@ -109,7 +109,7 @@
             <!-- Tambahan Item 2 -->
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="145dp"
+                android:layout_height="125dp"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/rounded_menu_button">
 
@@ -121,21 +121,21 @@
                     android:orientation="horizontal">
 
                     <ImageButton
-                        android:id="@+id/secondImageButton"
-                        android:layout_width="70dp"
-                        android:layout_height="69dp"
+                        android:id="@+id/leftImageButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_marginEnd="10dp"
                         android:adjustViewBounds="true"
                         android:background="@null"
-                        android:src="@drawable/gambar2" />
+                        android:src="@drawable/gambar1" />
 
                     <TextView
-                        android:id="@+id/quizText2"
+                        android:id="@+id/quizText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_semibold"
                         android:gravity="center_vertical"
-                        android:text="Quiz 2"
+                        android:text="Mulai Quiz"
                         android:textColor="@color/white"
                         android:textSize="20sp" />
                 </LinearLayout>
@@ -144,7 +144,7 @@
             <!-- Tambahan Item 3 -->
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="145dp"
+                android:layout_height="125dp"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/rounded_menu_button">
 
@@ -156,21 +156,21 @@
                     android:orientation="horizontal">
 
                     <ImageButton
-                        android:id="@+id/thirdImageButton"
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
+                        android:id="@+id/leftImageButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_marginEnd="10dp"
                         android:adjustViewBounds="true"
                         android:background="@null"
-                        android:src="@drawable/gambar3" />
+                        android:src="@drawable/gambar1" />
 
                     <TextView
-                        android:id="@+id/quizText3"
+                        android:id="@+id/quizText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_semibold"
                         android:gravity="center_vertical"
-                        android:text="Quiz 3"
+                        android:text="Mulai Quiz"
                         android:textColor="@color/white"
                         android:textSize="20sp" />
                 </LinearLayout>
@@ -179,7 +179,7 @@
             <!-- Tambahan Item 4 -->
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="145dp"
+                android:layout_height="125dp"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/rounded_menu_button">
 
@@ -191,25 +191,37 @@
                     android:orientation="horizontal">
 
                     <ImageButton
-                        android:id="@+id/fourthImageButton"
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
+                        android:id="@+id/leftImageButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_marginEnd="10dp"
                         android:adjustViewBounds="true"
                         android:background="@null"
-                        android:src="@drawable/gambar4" />
+                        android:src="@drawable/gambar1" />
 
                     <TextView
-                        android:id="@+id/quizText4"
+                        android:id="@+id/quizText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_semibold"
                         android:gravity="center_vertical"
-                        android:text="Quiz 4"
+                        android:text="Mulai Quiz"
                         android:textColor="@color/white"
                         android:textSize="20sp" />
                 </LinearLayout>
             </FrameLayout>
         </GridLayout>
+        <!--Nav Menu-->
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottom_navigation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:backgroundTint="@android:color/white"
+                android:elevation="10dp"
+                app:itemIconSize="32dp"
+                app:itemIconTint="@color/color_menu"
+                app:itemTextColor="@color/color_menu"
+                app:menu="@menu/bottom_navigation_menu" />
     </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
