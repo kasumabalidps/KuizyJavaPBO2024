@@ -76,7 +76,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Item 1 -->
+        <!-- Items -->
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="115dp"
@@ -118,9 +118,6 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </FrameLayout>
-
-        <!-- Tambahkan item tambahan di sini -->
-
     </GridLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
