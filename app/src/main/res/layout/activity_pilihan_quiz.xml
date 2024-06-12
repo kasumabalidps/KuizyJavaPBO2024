@@ -44,10 +44,11 @@
             android:gravity="center_vertical">
 
             <ImageButton
-                android:id="@+id/backButton"
+                android:id="@+id/btnBack"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_marginEnd="10dp"
+                android:layout_marginStart="-4dp"
                 android:background="@null"
                 android:src="@drawable/arrow_left_2" />
 
@@ -92,7 +93,7 @@
                         android:layout_marginEnd="10dp"
                         android:adjustViewBounds="true"
                         android:background="@null"
-                        android:src="@drawable/gambar1" />
+                        android:src="@drawable/quiz_icon" />
 
                     <TextView
                         android:id="@+id/quizText"
@@ -127,7 +128,7 @@
                         android:layout_marginEnd="10dp"
                         android:adjustViewBounds="true"
                         android:background="@null"
-                        android:src="@drawable/gambar1" />
+                        android:src="@drawable/quiz_icon" />
 
                     <TextView
                         android:id="@+id/quizText"
@@ -162,7 +163,7 @@
                         android:layout_marginEnd="10dp"
                         android:adjustViewBounds="true"
                         android:background="@null"
-                        android:src="@drawable/gambar1" />
+                        android:src="@drawable/quiz_icon" />
 
                     <TextView
                         android:id="@+id/quizText"
@@ -197,7 +198,7 @@
                         android:layout_marginEnd="10dp"
                         android:adjustViewBounds="true"
                         android:background="@null"
-                        android:src="@drawable/gambar1" />
+                        android:src="@drawable/quiz_icon" />
 
                     <TextView
                         android:id="@+id/quizText"

@@ -20,4 +20,7 @@
     <string name="menu">Menu</string>
     <string name="selamat_datang">SELAMAT DATANG</string>
     <string name="confirm_password">Confirm Password</string>
+    <string name="mulaiquiz">MulaiQuiz</string>
+    <string name="ganti_password">Ganti Password</string>
+    <string name="aktivitas">Aktivitas</string>
 </resources>

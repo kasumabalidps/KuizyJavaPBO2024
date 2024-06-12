@@ -145,6 +145,14 @@
             android:layout_marginRight="10dp"
             android:background="@drawable/rounded_menu_button">
 
+            <!--Button Boongan-->
+            <ImageButton
+                android:id="@+id/btnMulaiQuiz"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#00000000"
+                android:contentDescription="@string/mulaiquiz" />
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -153,13 +161,13 @@
                 android:orientation="horizontal">
 
                 <ImageButton
-                    android:id="@+id/leftImageButton"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="10dp"
                     android:adjustViewBounds="true"
                     android:background="@null"
-                    android:src="@drawable/gambar1" />
+                    android:contentDescription="@string/mulaiquiz"
+                    android:src="@drawable/kuiz_icon" />
 
                 <TextView
                     android:id="@+id/quizText"
@@ -195,6 +203,14 @@
                 android:layout_marginEnd="5dp"
                 android:background="@drawable/rounded_menu_button">
 
+                <!--Button Boongan-->
+                <ImageButton
+                    android:id="@+id/btnPeraturan"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#00000000"
+                    android:contentDescription="@string/mulaiquiz" />
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -203,13 +219,13 @@
                     android:orientation="vertical">
 
                     <ImageButton
-                        android:id="@+id/leftImageButton1"
+                        android:id="@+id/leftImageButton6"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:layout_marginBottom="5dp"
                         android:background="@null"
                         android:scaleType="centerInside"
-                        android:src="@drawable/gambar1" />
+                        android:src="@drawable/peraturan_icon" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -241,18 +257,18 @@
                     <ImageButton
                         android:id="@+id/leftImageButton2"
                         android:layout_width="60dp"
-                        android:layout_height="60dp"
+                        android:layout_height="50dp"
                         android:layout_marginBottom="5dp"
                         android:background="@null"
                         android:scaleType="centerInside"
-                        android:src="@drawable/gambar1" />
+                        android:src="@drawable/aktivitas_icon" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_semibold"
                         android:gravity="center_horizontal"
-                        android:text="Peraturan"
+                        android:text="@string/aktivitas"
                         android:textColor="@color/white"
                         android:textSize="20sp" />
                 </LinearLayout>
@@ -267,6 +283,14 @@
                 android:layout_marginEnd="5dp"
                 android:background="@drawable/rounded_menu_button">
 
+                <!--Button Boongan-->
+                <ImageButton
+                    android:id="@+id/btnGantiPassword_Beranda"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#00000000"
+                    android:contentDescription="@string/mulaiquiz" />
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -275,20 +299,20 @@
                     android:orientation="vertical">
 
                     <ImageButton
-                        android:id="@+id/leftImageButton1"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_marginBottom="5dp"
+                        android:id="@+id/leftImageButton5"
+                        android:layout_width="55dp"
+                        android:layout_height="50dp"
+                        android:layout_marginBottom="10dp"
                         android:background="@null"
                         android:scaleType="centerInside"
-                        android:src="@drawable/gambar1" />
+                        android:src="@drawable/gantipw_icon" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_semibold"
                         android:gravity="center_horizontal"
-                        android:text="Peraturan"
+                        android:text="@string/ganti_password"
                         android:textColor="@color/white"
                         android:textSize="20sp" />
                 </LinearLayout>
@@ -312,19 +336,19 @@
 
                     <ImageButton
                         android:id="@+id/leftImageButton1"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_marginBottom="5dp"
+                        android:layout_width="55dp"
+                        android:layout_height="50dp"
+                        android:layout_marginBottom="10dp"
                         android:background="@null"
                         android:scaleType="centerInside"
-                        android:src="@drawable/gambar1" />
+                        android:src="@drawable/keluar_icon" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_semibold"
                         android:gravity="center_horizontal"
-                        android:text="Peraturan"
+                        android:text="Keluar"
                         android:textColor="@color/white"
                         android:textSize="20sp" />
                 </LinearLayout>

@@ -4,7 +4,7 @@
         android:icon="@drawable/home_icon" />
     <item
         android:id="@+id/navigation_quiz"
-        android:icon="@drawable/quiz_icon" />
+        android:icon="@drawable/kuiz_icon" />
     <item
         android:id="@+id/navigation_level"
         android:icon="@drawable/level_icon" />
