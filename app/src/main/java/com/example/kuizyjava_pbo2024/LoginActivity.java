@@ -1,10 +1,15 @@
 package com.example.kuizyjava_pbo2024;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -35,6 +40,33 @@ public class LoginActivity extends AppCompatActivity {
         etPassword = findViewById(R.id.etPassword);
 
         Button btnLogin = findViewById(R.id.btnMasuk);
+
+        // Set OnEditorActionListener to handle "Enter" key
+        etUsername.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE ||
+                        (event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN)) {
+                    // Perform your action (e.g., hide keyboard)
+                    hideKeyboard(v);
+                    return true;
+                }
+                return false;
+            }
+        });
+
+        etPassword.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE ||
+                        (event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN)) {
+                    // Perform your action (e.g., hide keyboard)
+                    hideKeyboard(v);
+                    return true;
+                }
+                return false;
+            }
+        });
 
         // Firebase Database Reference
         FirebaseDatabase.getInstance().getReferenceFromUrl("https://kuizy-pbo2024-default-rtdb.asia-southeast1.firebasedatabase.app/");
@@ -91,9 +123,16 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    // Method to hide the keyboard
+    private void hideKeyboard(View view) {
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
     // Click arah ke Register
     public void onBuatAkunClick(View v) {
         Intent register = new Intent(this, RegisterActivity.class);
         startActivity(register);
     }
+
 }
