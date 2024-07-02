@@ -23,7 +23,7 @@
     <ImageView
         android:id="@+id/rounded_beranda"
         android:layout_width="match_parent"
-        android:layout_height="640dp"
+        android:layout_height="710dp"
         android:background="@drawable/rounded_beranda"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
