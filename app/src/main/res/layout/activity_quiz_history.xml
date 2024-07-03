@@ -79,7 +79,7 @@
             android:id="@+id/text_view_point"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_medium"
+            android:fontFamily="@font/poppins_semibold"
             android:text="Total Point : 0"
             android:textColor="@color/black"
             android:textSize="24sp"
@@ -92,7 +92,7 @@
             android:id="@+id/text_view_soal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_medium"
+            android:fontFamily="@font/poppins_semibold"
             android:text="Total Soal : 0"
             android:textColor="@color/black"
             android:textSize="24sp"
@@ -120,6 +120,19 @@
                     android:layout_height="match_parent"
                     android:background="#00000000"
                     android:contentDescription="@string/mulaiquiz" />
+
+                <TextView
+                    android:id="@+id/text_quiz"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Quiz : Matematika\nPoint Terkumpul : 220\nTanggal : 9 Juni 2024"
+                    android:textColor="@color/white"
+                    android:padding="18dp"
+                    android:textSize="24sp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </FrameLayout>
