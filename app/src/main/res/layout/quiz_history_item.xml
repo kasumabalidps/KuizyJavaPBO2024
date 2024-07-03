@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="15dp"
+    android:background="@drawable/rounded_menu_button"
+    android:padding="18dp">
+
+    <TextView
+        android:id="@+id/text_quiz"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Quiz : Matematika\nPoint Terkumpul : 220\nTanggal : 9 Juni 2024"
+        android:textColor="@color/white"
+        android:textSize="24sp" />
+</FrameLayout>

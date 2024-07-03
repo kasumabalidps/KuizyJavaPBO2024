@@ -18,6 +18,7 @@ import androidx.core.view.ViewCompat;
 
 import com.bumptech.glide.Glide;
 import com.example.kuizyjava_pbo2024.quizs.QuizCategoryActivity;
+import com.example.kuizyjava_pbo2024.quizs.QuizHistoryActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -54,10 +55,21 @@ public class BerandaActivity extends AppCompatActivity {
         sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
 
         ImageButton btnMulaiQuiz = findViewById(R.id.btnMulaiQuiz);
+        ImageButton btnAktivitas = findViewById(R.id.btnAktivitas);
+
         btnMulaiQuiz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(BerandaActivity.this, QuizCategoryActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        btnAktivitas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(BerandaActivity.this, QuizHistoryActivity.class);
                 startActivity(intent);
                 finish();
             }
