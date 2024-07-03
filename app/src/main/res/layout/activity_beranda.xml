@@ -220,8 +220,8 @@
 
                     <ImageButton
                         android:id="@+id/leftImageButton6"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
                         android:layout_marginBottom="5dp"
                         android:background="@null"
                         android:scaleType="centerInside"
@@ -264,7 +264,7 @@
 
                     <ImageButton
                         android:id="@+id/leftImageButton2"
-                        android:layout_width="60dp"
+                        android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_marginBottom="5dp"
                         android:background="@null"
@@ -308,8 +308,8 @@
 
                     <ImageButton
                         android:id="@+id/leftImageButton5"
-                        android:layout_width="55dp"
-                        android:layout_height="50dp"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
                         android:layout_marginBottom="10dp"
                         android:background="@null"
                         android:scaleType="centerInside"
@@ -352,8 +352,8 @@
 
                     <ImageButton
                         android:id="@+id/leftImageButton1"
-                        android:layout_width="55dp"
-                        android:layout_height="50dp"
+                        android:layout_width="50dp"
+                        android:layout_height="45dp"
                         android:layout_marginBottom="10dp"
                         android:background="@null"
                         android:scaleType="centerInside"
