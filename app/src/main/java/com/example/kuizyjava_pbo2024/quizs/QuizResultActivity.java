@@ -23,9 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 
 public class QuizResultActivity extends AppCompatActivity {
@@ -92,12 +90,12 @@ public class QuizResultActivity extends AppCompatActivity {
         dateTextView.setText("Tanggal: " + currentDate);
 
         // Save result data to Firebase
-        saveResultToFirebase();
+        saveResultToFirebase(currentDate);
 
         findViewById(R.id.button_mainlagi).setOnClickListener(v -> finish());
     }
 
-    private void saveResultToFirebase() {
+    private void saveResultToFirebase(String currentDate) {
         // Retrieve the current user ID from SharedPreferences
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
         String currentUserId = sharedPreferences.getString("currentUserId", "");
@@ -125,6 +123,24 @@ public class QuizResultActivity extends AppCompatActivity {
                     userRef.child("total_soal").setValue(newTotalSoal);
                     userRef.child("point").setValue(newPoints);
                     userRef.child("xp").setValue(newXP);
+
+                    // Get the next quiz history ID
+                    DatabaseReference quizHistoryRef = userRef.child("quiz_history");
+                    quizHistoryRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot historySnapshot) {
+                            long nextId = historySnapshot.getChildrenCount() + 1;
+                            DatabaseReference newQuizHistoryRef = quizHistoryRef.child(String.valueOf(nextId));
+                            newQuizHistoryRef.child("name").setValue(quizName);
+                            newQuizHistoryRef.child("tanggal").setValue(currentDate);
+                            newQuizHistoryRef.child("point_ditambahkan").setValue(totalPoints);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            // Handle error if needed
+                        }
+                    });
                 }
             }
 
