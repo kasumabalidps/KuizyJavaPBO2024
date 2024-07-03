@@ -2,13 +2,14 @@ package com.example.kuizyjava_pbo2024;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +29,7 @@ import com.google.firebase.database.ValueEventListener;
 public class LoginActivity extends AppCompatActivity {
 
     private EditText etUsername, etPassword;
+    private DatabaseReference database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,37 +43,14 @@ public class LoginActivity extends AppCompatActivity {
 
         Button btnLogin = findViewById(R.id.btnMasuk);
 
-        // Set OnEditorActionListener to handle "Enter" key
-        etUsername.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_DONE ||
-                        (event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN)) {
-                    // Perform your action (e.g., hide keyboard)
-                    hideKeyboard(v);
-                    return true;
-                }
-                return false;
-            }
-        });
-
-        etPassword.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_DONE ||
-                        (event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN)) {
-                    // Perform your action (e.g., hide keyboard)
-                    hideKeyboard(v);
-                    return true;
-                }
-                return false;
-            }
-        });
+        setOnEditorActionListeners(etUsername);
+        setOnEditorActionListeners(etPassword);
 
         // Firebase Database Reference
         FirebaseDatabase.getInstance().getReferenceFromUrl("https://kuizy-pbo2024-default-rtdb.asia-southeast1.firebasedatabase.app/");
         // Mendapatkan Database Users
-        DatabaseReference database = FirebaseDatabase.getInstance().getReference("users");
+        database = FirebaseDatabase.getInstance().getReference("users");
+
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,35 +58,10 @@ public class LoginActivity extends AppCompatActivity {
                 String password = etPassword.getText().toString();
 
                 if (username.isEmpty() || password.isEmpty()) {
-                    // Munculin Toast
                     Toast.makeText(LoginActivity.this, "Mohon Username dan Password diisi!!", Toast.LENGTH_SHORT).show();
                 } else {
-                    database.addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            if (snapshot.child(username).exists()) {
-                                // Mendapatkan Data dari Database
-                                String passwordDB = snapshot.child(username).child("password").getValue(String.class);
-
-                                if (password.equals(passwordDB)) {
-                                    Toast.makeText(LoginActivity.this, "Berhasil Login", Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(LoginActivity.this, BerandaActivity.class);
-                                    startActivity(intent);
-                                } else {
-                                    Toast.makeText(LoginActivity.this, "Username atau Password salah!!", Toast.LENGTH_SHORT).show();
-                                }
-                            } else {
-                                Toast.makeText(LoginActivity.this, "Username atau Password salah!!", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
+                    loginUser(username, password);
                 }
-
             }
         });
 
@@ -123,16 +77,60 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    // Method to hide the keyboard
+    private void loginUser(String username, String password) {
+        database.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.child(username).exists()) {
+                    // Mendapatkan Data dari Database
+                    String passwordDB = snapshot.child(username).child("password").getValue(String.class);
+
+                    if (password.equals(passwordDB)) {
+                        Toast.makeText(LoginActivity.this, "Berhasil Login", Toast.LENGTH_SHORT).show();
+                        storeUserIdInPreferences(username);
+                        Intent intent = new Intent(LoginActivity.this, BerandaActivity.class);
+                        startActivity(intent);
+                        finish();
+                    } else {
+                        Toast.makeText(LoginActivity.this, "Username atau Password salah!!", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(LoginActivity.this, "Username atau Password salah!!", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(LoginActivity.this, "Database error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void storeUserIdInPreferences(String userId) {
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("currentUserId", userId);
+        editor.apply();
+    }
+
+    private void setOnEditorActionListeners(EditText editText) {
+        editText.setOnEditorActionListener((TextView v, int actionId, KeyEvent event) -> {
+            if (actionId == EditorInfo.IME_ACTION_DONE ||
+                    (event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN)) {
+                hideKeyboard(v);
+                return true;
+            }
+            return false;
+        });
+    }
+
     private void hideKeyboard(View view) {
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
-    // Click arah ke Register
     public void onBuatAkunClick(View v) {
         Intent register = new Intent(this, RegisterActivity.class);
         startActivity(register);
     }
-
 }

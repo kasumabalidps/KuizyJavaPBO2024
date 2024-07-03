@@ -21,9 +21,13 @@ import androidx.core.view.WindowInsetsCompat;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class RegisterActivity extends AppCompatActivity {
-    // Ambil nama ID dari layout
+
     private EditText etUsername, etEmail, etPassword, etConfirmPassword;
+    private DatabaseReference database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,13 +36,11 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         Button btnRegister = findViewById(R.id.btnRegister);
 
-        // Mencari ID dari layout
         etUsername = findViewById(R.id.etUsername);
         etEmail = findViewById(R.id.etEmail);
         etPassword = findViewById(R.id.etPassword);
         etConfirmPassword = findViewById(R.id.etConfirmPassword);
 
-        // Set OnEditorActionListener to handle "Enter" key
         setOnEditorActionListeners(etUsername);
         setOnEditorActionListeners(etEmail);
         setOnEditorActionListeners(etPassword);
@@ -46,10 +48,8 @@ public class RegisterActivity extends AppCompatActivity {
 
         // Firebase Database Reference
         FirebaseDatabase.getInstance().getReferenceFromUrl("https://kuizy-pbo2024-default-rtdb.asia-southeast1.firebasedatabase.app/");
-        // Mendapatkan Database Users
-        DatabaseReference database = FirebaseDatabase.getInstance().getReference("users");
+        database = FirebaseDatabase.getInstance().getReference("users");
 
-        // Btn Listener Register
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,23 +63,12 @@ public class RegisterActivity extends AppCompatActivity {
                 } else if (!password.equals(confirmPassword)) {
                     Toast.makeText(RegisterActivity.this, "Password tidak sama!!", Toast.LENGTH_SHORT).show();
                 } else {
-                    // Nama Child di dalam users
-                    DatabaseReference usersChildName = database.child(username);
-
-                    usersChildName.child("email").setValue(email);
-                    usersChildName.child("username").setValue(username);
-                    usersChildName.child("password").setValue(password);
-
-                    Toast.makeText(RegisterActivity.this, "Berhasil mendaftar", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                    startActivity(intent);
-                    finish();
+                    registerUser(email, username, password);
                 }
             }
         });
 
-        // Sembunyiin ActionBar di Atas
-        if (getSupportActionBar()!= null) {
+        if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
 
@@ -90,27 +79,58 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
+    private void registerUser(String email, String username, String password) {
+        DatabaseReference usersChildName = database.child(username);
+
+        Map<String, Object> userData = new HashMap<>();
+        userData.put("email", email);
+        userData.put("username", username);
+        userData.put("password", password);
+        userData.put("level", 0);
+        userData.put("xp", 0);
+        userData.put("point", 0);
+        userData.put("profile_url", "");
+
+        Map<String, Object> quizHistory1 = new HashMap<>();
+        quizHistory1.put("quiz_name", "");
+        quizHistory1.put("quiz_history_time", "");
+
+        Map<String, Object> quizHistory2 = new HashMap<>();
+        quizHistory2.put("quiz_name", "");
+        quizHistory2.put("quiz_history_time", "");
+
+        Map<String, Object> quizHistory = new HashMap<>();
+        quizHistory.put("1", quizHistory1);
+        quizHistory.put("2", quizHistory2);
+
+        userData.put("quiz_history", quizHistory);
+
+        usersChildName.setValue(userData)
+                .addOnSuccessListener(aVoid -> {
+                    Toast.makeText(RegisterActivity.this, "Berhasil mendaftar", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                    finish();
+                })
+                .addOnFailureListener(e -> Toast.makeText(RegisterActivity.this, "Gagal mendaftar: " + e.getMessage(), Toast.LENGTH_SHORT).show());
+    }
+
     private void setOnEditorActionListeners(EditText editText) {
-        editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_DONE ||
-                        (event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN)) {
-                    hideKeyboard(v);
-                    return true;
-                }
-                return false;
+        editText.setOnEditorActionListener((TextView v, int actionId, KeyEvent event) -> {
+            if (actionId == EditorInfo.IME_ACTION_DONE ||
+                    (event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN)) {
+                hideKeyboard(v);
+                return true;
             }
+            return false;
         });
     }
 
-    // Method to hide the keyboard
     private void hideKeyboard(View view) {
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
-    // Click arah ke Login
     public void onLoginClick(View view) {
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
