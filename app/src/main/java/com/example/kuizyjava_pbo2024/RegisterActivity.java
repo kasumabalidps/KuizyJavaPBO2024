@@ -110,18 +110,7 @@ public class RegisterActivity extends AppCompatActivity {
         userData.put("profile_url", "");
         userData.put("total_soal", 0);
 
-        Map<String, Object> quizHistory1 = new HashMap<>();
-        quizHistory1.put("quiz_name", "");
-        quizHistory1.put("quiz_history_time", "");
-
-        Map<String, Object> quizHistory2 = new HashMap<>();
-        quizHistory2.put("quiz_name", "");
-        quizHistory2.put("quiz_history_time", "");
-
         Map<String, Object> quizHistory = new HashMap<>();
-        quizHistory.put("1", quizHistory1);
-        quizHistory.put("2", quizHistory2);
-
         userData.put("quiz_history", quizHistory);
 
         usersChildName.setValue(userData)
