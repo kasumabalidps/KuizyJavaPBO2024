@@ -23,14 +23,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class QuizListMatematikaActivity extends AppCompatActivity {
+public class QuizListIPSActivity extends AppCompatActivity {
 
-    private static final String TAG = "QuizListMatematika";
+    private static final String TAG = "QuizListIPS";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_quiz_list_matematika);
+        setContentView(R.layout.activity_quiz_list_ips);
 
         // Enable edge-to-edge content
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
@@ -57,7 +57,7 @@ public class QuizListMatematikaActivity extends AppCompatActivity {
         });
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance("https://kuizy-pbo2024-default-rtdb.asia-southeast1.firebasedatabase.app/")
-                .getReference("quiz/categories/matematika/quizzes");
+                .getReference("quiz/categories/ips/quizzes");
 
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -101,10 +101,10 @@ public class QuizListMatematikaActivity extends AppCompatActivity {
 
     private void startQuizActivity(String quizId, String quizName) {
         Log.d(TAG, "Starting QuizActivity with quizId: " + quizId);
-        Intent intent = new Intent(QuizListMatematikaActivity.this, QuizActivity.class);
+        Intent intent = new Intent(QuizListIPSActivity.this, QuizActivity.class);
         intent.putExtra("quizId", quizId);
         intent.putExtra("quizName", quizName);
-        intent.putExtra("category", "matematika");
+        intent.putExtra("category", "ips");
         startActivity(intent);
     }
 }

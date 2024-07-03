@@ -1,8 +1,12 @@
 package com.example.kuizyjava_pbo2024.quizs;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.view.WindowInsets;
+import android.view.WindowInsetsController;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -11,7 +15,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.kuizyjava_pbo2024.R;
-import com.example.kuizyjava_pbo2024.quizs.Question;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -37,11 +40,31 @@ public class QuizActivity extends AppCompatActivity {
     private int incorrectAnswers = 0;
     private String quizId;
     private String quizName;
+    private String category;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
+
+        // Enable edge-to-edge content
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            getWindow().setDecorFitsSystemWindows(false);
+            WindowInsetsController controller = getWindow().getInsetsController();
+            if (controller != null) {
+                controller.hide(WindowInsets.Type.statusBars() | WindowInsets.Type.navigationBars());
+                controller.setSystemBarsBehavior(WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE);
+            }
+        } else {
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN
+                    | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                    | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+        }
+
+        // Hide the action bar if present
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
 
         textRemainingQuestions = findViewById(R.id.text_remaining_questions);
         textQuestion = findViewById(R.id.text_question);
@@ -52,9 +75,10 @@ public class QuizActivity extends AppCompatActivity {
 
         quizId = getIntent().getStringExtra("quizId");
         quizName = getIntent().getStringExtra("quizName");
+        category = getIntent().getStringExtra("category");
 
-        if (quizId == null || quizId.isEmpty() || quizName == null || quizName.isEmpty()) {
-            Toast.makeText(this, "Quiz ID or Name is missing", Toast.LENGTH_SHORT).show();
+        if (quizId == null || quizId.isEmpty() || quizName == null || quizName.isEmpty() || category == null || category.isEmpty()) {
+            Toast.makeText(this, "Quiz ID, Name or Category is missing", Toast.LENGTH_SHORT).show();
             finish();
             return;
         }
@@ -62,7 +86,7 @@ public class QuizActivity extends AppCompatActivity {
         Log.d(TAG, "Received quizId: " + quizId);
 
         mDatabase = FirebaseDatabase.getInstance("https://kuizy-pbo2024-default-rtdb.asia-southeast1.firebasedatabase.app/")
-                .getReference("quiz/categories/matematika/quizzes").child(quizId).child("questions");
+                .getReference("quiz/categories").child(category).child("quizzes").child(quizId).child("questions");
 
         loadQuestions();
     }
@@ -131,6 +155,7 @@ public class QuizActivity extends AppCompatActivity {
         intent.putExtra("quizName", quizName);
         intent.putExtra("correctAnswers", correctAnswers);
         intent.putExtra("incorrectAnswers", incorrectAnswers);
+        intent.putExtra("category", category);
         startActivity(intent);
         finish();
     }

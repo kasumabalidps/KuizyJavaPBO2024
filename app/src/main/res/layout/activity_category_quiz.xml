@@ -177,6 +177,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+                <!--Button Boongan-->
+                <ImageButton
+                    android:id="@+id/btnMulaiQuizIPS"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#00000000"
+                    android:contentDescription="@string/mulaiquiz" />
+
+
                 <ImageButton
                     android:id="@+id/icon_button_ips"
                     android:layout_width="55dp"

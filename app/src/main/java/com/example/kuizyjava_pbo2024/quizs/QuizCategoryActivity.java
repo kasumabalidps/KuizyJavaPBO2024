@@ -13,6 +13,7 @@ import androidx.core.view.ViewCompat;
 
 import com.example.kuizyjava_pbo2024.BerandaActivity;
 import com.example.kuizyjava_pbo2024.R;
+import com.example.kuizyjava_pbo2024.quizs.quizList.QuizListIPSActivity;
 import com.example.kuizyjava_pbo2024.quizs.quizList.QuizListMatematikaActivity;
 
 public class QuizCategoryActivity extends AppCompatActivity {
@@ -39,6 +40,7 @@ public class QuizCategoryActivity extends AppCompatActivity {
 
         ImageButton btnBack = findViewById(R.id.btnBack);
         ImageButton btnMulaiQuizMatematika = findViewById(R.id.btnMulaiQuizMatematika);
+        ImageButton btnMulaiQuizIPS = findViewById(R.id.btnMulaiQuizIPS);
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,6 +55,15 @@ public class QuizCategoryActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(QuizCategoryActivity.this, QuizListMatematikaActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        btnMulaiQuizIPS.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(QuizCategoryActivity.this, QuizListIPSActivity.class);
                 startActivity(intent);
                 finish();
             }
