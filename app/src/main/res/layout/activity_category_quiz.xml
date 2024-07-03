@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#1E1B4B"
-    tools:context=".BerandaActivity">
+    tools:context=".quizs.QuizCategoryActivity">
 
     <pl.droidsonroids.gif.GifImageView
         android:id="@+id/imageView4"
@@ -85,6 +85,14 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+
+                <!--Button Boongan-->
+                <ImageButton
+                    android:id="@+id/btnMulaiQuizMatematika"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#00000000"
+                    android:contentDescription="@string/mulaiquiz" />
 
                 <ImageButton
                     android:id="@+id/icon_button_matematika"
