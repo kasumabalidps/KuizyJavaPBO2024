@@ -90,6 +90,7 @@
                 android:padding="35dp">
 
                 <TextView
+                    android:id="@+id/textQuizName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Pilihan Quiz: Matematika"
@@ -99,6 +100,7 @@
                     android:layout_marginBottom="8dp"/>
 
                 <TextView
+                    android:id="@+id/textCorrectAnswers"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Benar: 9"
@@ -108,6 +110,7 @@
                     android:layout_marginBottom="8dp"/>
 
                 <TextView
+                    android:id="@+id/textIncorrectAnswers"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Salah: 1"
@@ -117,6 +120,7 @@
                     android:layout_marginBottom="8dp"/>
 
                 <TextView
+                    android:id="@+id/textTotalPoints"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Point Terkumpul: 90"
@@ -126,6 +130,7 @@
                     android:layout_marginBottom="8dp"/>
 
                 <TextView
+                    android:id="@+id/textXpPoints"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="XP Point: 220"
@@ -135,6 +140,7 @@
                     android:layout_marginBottom="8dp"/>
 
                 <TextView
+                    android:id="@+id/textDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Tanggal: 9 Juni 2024"
@@ -144,7 +150,6 @@
                     android:layout_marginBottom="8dp"/>
             </LinearLayout>
         </FrameLayout>
-
 
         <Button
             android:id="@+id/button_mainlagi"
