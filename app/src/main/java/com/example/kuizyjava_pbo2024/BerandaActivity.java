@@ -15,7 +15,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.bumptech.glide.Glide;
 import com.google.firebase.database.DataSnapshot;
@@ -57,7 +56,7 @@ public class BerandaActivity extends AppCompatActivity {
         btnMulaiQuiz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(BerandaActivity.this, PilihanQuizActivity.class);
+                Intent intent = new Intent(BerandaActivity.this, QuizCategoryActivity.class);
                 startActivity(intent);
                 finish();
             }

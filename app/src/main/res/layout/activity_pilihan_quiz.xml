@@ -87,7 +87,7 @@
                 android:layout_height="match_parent">
 
                 <ImageButton
-                    android:id="@+id/icon_button"
+                    android:id="@+id/icon_button_matematika"
                     android:layout_width="55dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="35dp"
@@ -101,7 +101,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/text_view"
+                    android:id="@+id/text_view_matematika"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_semibold"
@@ -112,11 +112,137 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0"
-                    app:layout_constraintStart_toEndOf="@id/icon_button"
+                    app:layout_constraintStart_toEndOf="@+id/icon_button_matematika"
                     app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </FrameLayout>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="115dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/rounded_menu_button">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageButton
+                    android:id="@+id/icon_button_ipa"
+                    android:layout_width="55dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="35dp"
+                    android:layout_marginEnd="25dp"
+                    android:adjustViewBounds="true"
+                    android:background="@null"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ips_icon"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/text_view_ipa"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:gravity="center"
+                    android:text="Ilmu Pengetahuan Alam"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toEndOf="@+id/icon_button_ipa"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="115dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/rounded_menu_button">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageButton
+                    android:id="@+id/icon_button_ips"
+                    android:layout_width="55dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="35dp"
+                    android:layout_marginEnd="25dp"
+                    android:adjustViewBounds="true"
+                    android:background="@null"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ips_icon"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/text_view_ips"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:gravity="center"
+                    android:text="Ilmu Pengetahuan Sosial"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toEndOf="@+id/icon_button_ips"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="115dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/rounded_menu_button">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageButton
+                    android:id="@+id/icon_button_ppkn"
+                    android:layout_width="55dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="35dp"
+                    android:layout_marginEnd="25dp"
+                    android:adjustViewBounds="true"
+                    android:background="@null"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ips_icon"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/text_view_pkn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:gravity="center"
+                    android:text="PPKN"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toEndOf="@id/icon_button_ppkn"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </FrameLayout>
+
     </GridLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

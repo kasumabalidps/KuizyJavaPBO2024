@@ -1,22 +1,25 @@
 package com.example.kuizyjava_pbo2024;
 
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowInsets;
 import android.view.WindowInsetsController;
-import android.widget.ImageButton;
 
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class PilihanQuizActivity extends AppCompatActivity {
+public class QuizListActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_quiz_result);
+
 
         // Enable edge-to-edge content
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
@@ -32,19 +35,6 @@ public class PilihanQuizActivity extends AppCompatActivity {
                     | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
         }
 
-        setContentView(R.layout.activity_pilihan_quiz);
-
-        ImageButton btnBack = findViewById(R.id.btnBack);
-
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(PilihanQuizActivity.this, BerandaActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-
         // Hide the action bar if present
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
@@ -52,6 +42,12 @@ public class PilihanQuizActivity extends AppCompatActivity {
 
         // Ensure no padding is applied to the root layout
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            return insets;
+        });
+
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
     }
