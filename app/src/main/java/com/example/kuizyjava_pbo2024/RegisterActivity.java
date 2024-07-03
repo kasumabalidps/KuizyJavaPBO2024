@@ -90,6 +90,7 @@ public class RegisterActivity extends AppCompatActivity {
         userData.put("xp", 0);
         userData.put("point", 0);
         userData.put("profile_url", "");
+        userData.put("total_soal", 0);
 
         Map<String, Object> quizHistory1 = new HashMap<>();
         quizHistory1.put("quiz_name", "");

@@ -8,13 +8,16 @@ import android.view.View;
 import android.view.WindowInsets;
 import android.view.WindowInsetsController;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -51,7 +54,6 @@ public class BerandaActivity extends AppCompatActivity {
         sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
 
         ImageButton btnMulaiQuiz = findViewById(R.id.btnMulaiQuiz);
-
         btnMulaiQuiz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,12 +73,14 @@ public class BerandaActivity extends AppCompatActivity {
             return insets;
         });
 
-        // Display the user's name
-        displayUserName();
+        // Display the user's data
+        displayUserData();
     }
 
-    private void displayUserName() {
+    private void displayUserData() {
         final TextView subText = findViewById(R.id.subText);
+        final TextView textInCircle = findViewById(R.id.text_in_circle);
+        final ImageView profileImageView = findViewById(R.id.imageButton);
 
         String currentUserId = sharedPreferences.getString("currentUserId", null);
         if (currentUserId != null) {
@@ -87,13 +91,25 @@ public class BerandaActivity extends AppCompatActivity {
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     if (dataSnapshot.exists()) {
                         String username = dataSnapshot.child("username").getValue(String.class);
+                        int level = dataSnapshot.child("level").getValue(Integer.class);
+                        String profileUrl = dataSnapshot.child("profile_url").getValue(String.class);
+
                         subText.setText("Halo, " + username);
+                        textInCircle.setText(String.valueOf(level));
+
+                        if (profileUrl != null && !profileUrl.isEmpty()) {
+                            Glide.with(BerandaActivity.this)
+                                    .load(profileUrl)
+                                    .into(profileImageView);
+                        } else {
+                            profileImageView.setImageResource(R.drawable.default_profile); // Fallback image
+                        }
                     }
                 }
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
-                    // Handle possible errors
+                    Toast.makeText(BerandaActivity.this, "Failed to load user data: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
         }
