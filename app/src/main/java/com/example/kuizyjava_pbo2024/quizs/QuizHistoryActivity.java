@@ -28,6 +28,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
 public class QuizHistoryActivity extends AppCompatActivity {
 
     private static final String TAG = "QuizHistoryActivity";
@@ -108,14 +113,29 @@ public class QuizHistoryActivity extends AppCompatActivity {
                     totalSoalTextView.setText("Total Soal : " + totalSoal);
 
                     DataSnapshot quizHistorySnapshot = snapshot.child("quiz_history");
+                    List<QuizHistoryItem> historyItems = new ArrayList<>();
+
                     for (DataSnapshot historySnapshot : quizHistorySnapshot.getChildren()) {
                         String quizName = historySnapshot.child("name").getValue(String.class);
                         String tanggal = historySnapshot.child("tanggal").getValue(String.class);
                         int pointDitambahkan = historySnapshot.child("point_ditambahkan").getValue(Integer.class) != null ? historySnapshot.child("point_ditambahkan").getValue(Integer.class) : 0;
 
                         if (quizName != null && tanggal != null) {
-                            addHistoryItemToGridLayout(quizName, pointDitambahkan, tanggal);
+                            historyItems.add(new QuizHistoryItem(quizName, pointDitambahkan, tanggal, historySnapshot.getKey()));
                         }
+                    }
+
+                    // Sort the history items by the key in descending order
+                    Collections.sort(historyItems, new Comparator<QuizHistoryItem>() {
+                        @Override
+                        public int compare(QuizHistoryItem o1, QuizHistoryItem o2) {
+                            return Integer.parseInt(o2.getKey()) - Integer.parseInt(o1.getKey());
+                        }
+                    });
+
+                    // Add the sorted items to the GridLayout
+                    for (QuizHistoryItem item : historyItems) {
+                        addHistoryItemToGridLayout(item.getQuizName(), item.getPointDitambahkan(), item.getTanggal());
                     }
                 }
             }
@@ -135,5 +155,35 @@ public class QuizHistoryActivity extends AppCompatActivity {
         textQuiz.setText(historyText);
 
         gridLayout.addView(historyItem);
+    }
+
+    private static class QuizHistoryItem {
+        private String quizName;
+        private int pointDitambahkan;
+        private String tanggal;
+        private String key;
+
+        public QuizHistoryItem(String quizName, int pointDitambahkan, String tanggal, String key) {
+            this.quizName = quizName;
+            this.pointDitambahkan = pointDitambahkan;
+            this.tanggal = tanggal;
+            this.key = key;
+        }
+
+        public String getQuizName() {
+            return quizName;
+        }
+
+        public int getPointDitambahkan() {
+            return pointDitambahkan;
+        }
+
+        public String getTanggal() {
+            return tanggal;
+        }
+
+        public String getKey() {
+            return key;
+        }
     }
 }
