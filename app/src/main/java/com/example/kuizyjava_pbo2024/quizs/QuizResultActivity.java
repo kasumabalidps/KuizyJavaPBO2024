@@ -9,12 +9,14 @@ import android.view.View;
 import android.view.WindowInsets;
 import android.view.WindowInsetsController;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.kuizyjava_pbo2024.BerandaActivity;
 import com.example.kuizyjava_pbo2024.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -60,6 +62,17 @@ public class QuizResultActivity extends AppCompatActivity {
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
+
+        ImageButton btnBack = findViewById(R.id.btnBack);
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(QuizResultActivity.this, BerandaActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         // Initialize views
         quizNameTextView = findViewById(R.id.quiz_name);
@@ -129,7 +142,13 @@ public class QuizResultActivity extends AppCompatActivity {
                     quizHistoryRef.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot historySnapshot) {
-                            long nextId = historySnapshot.getChildrenCount() + 1;
+                            long nextId = 1;
+                            for (DataSnapshot ds : historySnapshot.getChildren()) {
+                                long id = Long.parseLong(ds.getKey());
+                                if (id >= nextId) {
+                                    nextId = id + 1;
+                                }
+                            }
                             DatabaseReference newQuizHistoryRef = quizHistoryRef.child(String.valueOf(nextId));
                             newQuizHistoryRef.child("name").setValue(quizName);
                             newQuizHistoryRef.child("tanggal").setValue(currentDate);

@@ -17,6 +17,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.kuizyjava_pbo2024.R;
 import com.example.kuizyjava_pbo2024.quizs.QuizActivity;
+import com.example.kuizyjava_pbo2024.quizs.QuizCategoryActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -50,6 +51,17 @@ public class QuizListMatematikaActivity extends AppCompatActivity {
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
+
+        ImageButton btnBack = findViewById(R.id.btnBack);
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(QuizListMatematikaActivity.this, QuizCategoryActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         // Ensure no padding is applied to the root layout
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
