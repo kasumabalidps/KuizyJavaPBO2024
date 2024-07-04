@@ -79,9 +79,36 @@ public class BerandaActivity extends AppCompatActivity {
         btnPeraturan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(BerandaActivity.this, PeraturanActivity.class);
-                startActivity(intent);
-                finish();
+                // Retrieve the current user ID from SharedPreferences
+                SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+                String currentUserId = sharedPreferences.getString("currentUserId", "");
+
+                if (currentUserId.isEmpty()) {
+                    Toast.makeText(BerandaActivity.this, "ID pengguna tidak ditemukan. Silakan masuk kembali.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                DatabaseReference userRef = FirebaseDatabase.getInstance("https://kuizy-pbo2024-default-rtdb.asia-southeast1.firebasedatabase.app/")
+                        .getReference("users").child(currentUserId);
+
+                userRef.child("peraturan").addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        Boolean hasAgreed = dataSnapshot.getValue(Boolean.class);
+                        if (hasAgreed != null && hasAgreed) {
+                            Toast.makeText(BerandaActivity.this, "Kamu sudah menyetujui peraturan sebelumnya.", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Intent intent = new Intent(BerandaActivity.this, PeraturanActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        Toast.makeText(BerandaActivity.this, "Gagal memeriksa status persetujuan.", Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
 
@@ -131,7 +158,7 @@ public class BerandaActivity extends AppCompatActivity {
                                     .load(profileUrl)
                                     .into(profileImageView);
                         } else {
-                            profileImageView.setImageResource(R.drawable.default_profile); // Fallback image
+                            profileImageView.setImageResource(R.drawable.default_profile);
                         }
 
                         if (levelProgress != null) {
@@ -143,7 +170,7 @@ public class BerandaActivity extends AppCompatActivity {
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
-                    Toast.makeText(BerandaActivity.this, "Failed to load user data: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(BerandaActivity.this, "Gagal memuat data pengguna: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
         }

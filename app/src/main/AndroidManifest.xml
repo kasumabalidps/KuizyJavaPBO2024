@@ -24,9 +24,6 @@
             android:name=".quizs.quizList.QuizListIPSActivity"
             android:exported="false" />
         <activity
-            android:name=".quizs.quizList.QuizListPPKN"
-            android:exported="false" />
-        <activity
             android:name=".quizs.quizList.QuizListMatematikaActivity"
             android:exported="false" />
         <activity

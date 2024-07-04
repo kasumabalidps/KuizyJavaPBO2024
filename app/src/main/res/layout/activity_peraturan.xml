@@ -82,7 +82,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_bold"
             android:text="Peraturan"
-            android:layout_marginTop="45dp"
+            android:layout_marginTop="75dp"
             android:layout_gravity="center_horizontal"
             android:textColor="@color/black"
             android:textSize="30sp" />
@@ -130,7 +130,7 @@
                 android:layout_marginStart="8dp"/>
         </LinearLayout>
         <Button
-            android:id="@+id/button_mainlagi"
+            android:id="@+id/btnSetuju"
             android:layout_width="match_parent"
             android:layout_height="66dp"
             android:text="Saya Mengerti"
