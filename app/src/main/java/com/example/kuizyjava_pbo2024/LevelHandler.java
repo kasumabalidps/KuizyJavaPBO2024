@@ -8,20 +8,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class LevelHandler {
-
-    public static int calculateLevel(int xp) {
-        int level = 0;
-        int requiredXp = 100;
-
-        while (xp >= requiredXp) {
-            xp -= requiredXp;
-            level++;
-            requiredXp += 100; // Increase the required XP for the next level
-        }
-
-        return level;
-    }
-
     public static int calculateLevelProgress(int xp, int level) {
         int requiredXp = 100 * level;
         int previousRequiredXp = 100 * (level - 1);
@@ -69,7 +55,7 @@ public class LevelHandler {
     }
 
     public static void setProgressWidth(ImageView progressBar, int progress) {
-        int maxWidth = 362; // Max width in dp
+        int maxWidth = 362;
         int progressWidth = (int) ((progress / 100.0) * maxWidth);
 
         ViewGroup.LayoutParams layoutParams = progressBar.getLayoutParams();
