@@ -56,6 +56,7 @@ public class BerandaActivity extends AppCompatActivity {
 
         ImageButton btnMulaiQuiz = findViewById(R.id.btnMulaiQuiz);
         ImageButton btnAktivitas = findViewById(R.id.btnAktivitas);
+        ImageButton btnPeraturan = findViewById(R.id.btnPeraturan);
 
         btnMulaiQuiz.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,6 +71,15 @@ public class BerandaActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(BerandaActivity.this, QuizHistoryActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        btnPeraturan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(BerandaActivity.this, PeraturanActivity.class);
                 startActivity(intent);
                 finish();
             }
