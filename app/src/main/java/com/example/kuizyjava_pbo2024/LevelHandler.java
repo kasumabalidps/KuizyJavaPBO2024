@@ -9,35 +9,29 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class LevelHandler {
 
-    // Metode untuk menghitung level berdasarkan XP
-    public static int[] calculateLevelAndRemainingXP(int xp, int currentLevel) {
-        int level = currentLevel;
-        int xpRequired = level * 100;
+    public static int calculateLevel(int xp) {
+        int level = 0;
+        int requiredXp = 100;
 
-        while (xp >= xpRequired) {
-            xp -= xpRequired;
+        while (xp >= requiredXp) {
+            xp -= requiredXp;
             level++;
-            xpRequired = level * 100;
+            requiredXp += 100; // Increase the required XP for the next level
         }
 
-        return new int[]{level, xp};
+        return level;
     }
 
-    // Metode untuk menghitung persentase kemajuan menuju level berikutnya
-    public static int calculateLevelProgress(int xp, int currentLevel) {
-        int level = currentLevel;
-        int xpRequired = level * 100;
+    public static int calculateLevelProgress(int xp, int level) {
+        int requiredXp = 100 * level;
+        int previousRequiredXp = 100 * (level - 1);
 
-        while (xp >= xpRequired) {
-            xp -= xpRequired;
-            level++;
-            xpRequired = level * 100;
-        }
+        int currentLevelXp = xp - previousRequiredXp;
+        int nextLevelXp = requiredXp - previousRequiredXp;
 
-        return (int) (((double) xp / xpRequired) * 100);
+        return (int) ((currentLevelXp / (double) nextLevelXp) * 100);
     }
 
-    // Metode untuk memperbarui level di Firebase
     public static void updateLevelInFirebase(String userId, int xp, int currentLevel) {
         int[] levelAndXp = calculateLevelAndRemainingXP(xp, currentLevel);
         int level = levelAndXp[0];
@@ -61,13 +55,26 @@ public class LevelHandler {
         });
     }
 
-    // Metode untuk mengatur lebar progress bar berdasarkan persentase kemajuan
+    public static int[] calculateLevelAndRemainingXP(int xp, int currentLevel) {
+        int level = currentLevel;
+        int xpRequired = level * 100;
+
+        while (xp >= xpRequired) {
+            xp -= xpRequired;
+            level++;
+            xpRequired = level * 100;
+        }
+
+        return new int[]{level, xp};
+    }
+
     public static void setProgressWidth(ImageView progressBar, int progress) {
         int maxWidth = 362; // Max width in dp
         int progressWidth = (int) ((progress / 100.0) * maxWidth);
 
-        ViewGroup.LayoutParams params = progressBar.getLayoutParams();
-        params.width = (int) (progressWidth * progressBar.getContext().getResources().getDisplayMetrics().density);
-        progressBar.setLayoutParams(params);
+        ViewGroup.LayoutParams layoutParams = progressBar.getLayoutParams();
+        layoutParams.width = progressWidth;
+        progressBar.setLayoutParams(layoutParams);
     }
 }
+
