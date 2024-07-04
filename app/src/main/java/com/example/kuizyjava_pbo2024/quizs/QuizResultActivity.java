@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowInsets;
 import android.view.WindowInsetsController;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,7 +41,7 @@ public class QuizResultActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+        super.onCreate(savedInstanceState); // Corrected syntax here
         setContentView(R.layout.activity_quiz_result);
 
         // Enable edge-to-edge content
@@ -138,8 +137,8 @@ public class QuizResultActivity extends AppCompatActivity {
                     userRef.child("total_soal").setValue(newTotalSoal);
                     userRef.child("point").setValue(newPoints);
 
-                    // Update level and XP
-                    LevelHandler.updateLevelInFirebase(currentUserId, newXP, currentLevel);
+                    // Update the user's level and remaining XP in Firebase
+                    LevelHandler.updateLevelInFirebase(currentUserId, newXP);
 
                     // Get the next quiz history ID
                     DatabaseReference quizHistoryRef = userRef.child("quiz_history");

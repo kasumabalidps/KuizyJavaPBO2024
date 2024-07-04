@@ -19,7 +19,6 @@ import androidx.core.view.ViewCompat;
 import com.bumptech.glide.Glide;
 import com.example.kuizyjava_pbo2024.quizs.QuizCategoryActivity;
 import com.example.kuizyjava_pbo2024.quizs.QuizHistoryActivity;
-import com.example.kuizyjava_pbo2024.LevelHandler;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -30,7 +29,6 @@ public class BerandaActivity extends AppCompatActivity {
 
     private DatabaseReference mDatabase;
     private SharedPreferences sharedPreferences;
-    private ImageView progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +56,6 @@ public class BerandaActivity extends AppCompatActivity {
 
         ImageButton btnMulaiQuiz = findViewById(R.id.btnMulaiQuiz);
         ImageButton btnAktivitas = findViewById(R.id.btnAktivitas);
-        progressBar = findViewById(R.id.imageViewProgress);
 
         btnMulaiQuiz.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,6 +93,7 @@ public class BerandaActivity extends AppCompatActivity {
         final TextView subText = findViewById(R.id.subText);
         final TextView textInCircle = findViewById(R.id.text_in_circle);
         final ImageView profileImageView = findViewById(R.id.imageButton);
+        final ImageView progressBar = findViewById(R.id.imageViewProgress);
 
         String currentUserId = sharedPreferences.getString("currentUserId", null);
         if (currentUserId != null) {
@@ -106,12 +104,17 @@ public class BerandaActivity extends AppCompatActivity {
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     if (dataSnapshot.exists()) {
                         String username = dataSnapshot.child("username").getValue(String.class);
-                        int level = dataSnapshot.child("level").getValue(Integer.class);
-                        int xp = dataSnapshot.child("xp").getValue(Integer.class);
+                        Integer level = dataSnapshot.child("level").getValue(Integer.class);
+                        Integer levelProgress = dataSnapshot.child("levelProgress").getValue(Integer.class);
                         String profileUrl = dataSnapshot.child("profile_url").getValue(String.class);
 
-                        subText.setText("Halo, " + username);
-                        textInCircle.setText(String.valueOf(level));
+                        if (username != null) {
+                            subText.setText("Halo, " + username);
+                        }
+
+                        if (level != null) {
+                            textInCircle.setText(String.valueOf(level));
+                        }
 
                         if (profileUrl != null && !profileUrl.isEmpty()) {
                             Glide.with(BerandaActivity.this)
@@ -121,9 +124,10 @@ public class BerandaActivity extends AppCompatActivity {
                             profileImageView.setImageResource(R.drawable.default_profile); // Fallback image
                         }
 
-                        // Update progress bar
-                        int progress = LevelHandler.calculateLevelProgress(xp, level);
-                        LevelHandler.setProgressWidth(progressBar, progress);
+                        if (levelProgress != null) {
+                            // Update progress bar
+                            LevelHandler.setProgressWidth(progressBar, levelProgress);
+                        }
                     }
                 }
 
