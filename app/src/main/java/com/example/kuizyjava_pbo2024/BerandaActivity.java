@@ -57,6 +57,7 @@ public class BerandaActivity extends AppCompatActivity {
         ImageButton btnMulaiQuiz = findViewById(R.id.btnMulaiQuiz);
         ImageButton btnAktivitas = findViewById(R.id.btnAktivitas);
         ImageButton btnPeraturan = findViewById(R.id.btnPeraturan);
+        ImageButton btnKeluar = findViewById(R.id.btnKeluar);
 
         btnMulaiQuiz.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,6 +113,22 @@ public class BerandaActivity extends AppCompatActivity {
             }
         });
 
+        btnKeluar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Clear SharedPreferences
+                SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.clear();
+                editor.apply();
+
+                // Redirect to LoginActivity
+                Intent intent = new Intent(BerandaActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
         // Hide the action bar if present
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
@@ -158,7 +175,7 @@ public class BerandaActivity extends AppCompatActivity {
                                     .load(profileUrl)
                                     .into(profileImageView);
                         } else {
-                            profileImageView.setImageResource(R.drawable.default_profile);
+                            profileImageView.setImageResource(R.drawable.default_profile); // Fallback image
                         }
 
                         if (levelProgress != null) {
