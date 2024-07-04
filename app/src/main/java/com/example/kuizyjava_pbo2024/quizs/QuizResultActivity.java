@@ -17,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.kuizyjava_pbo2024.BerandaActivity;
+import com.example.kuizyjava_pbo2024.LevelHandler;
 import com.example.kuizyjava_pbo2024.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -128,6 +129,7 @@ public class QuizResultActivity extends AppCompatActivity {
                     int currentTotalSoal = snapshot.child("total_soal").getValue(Integer.class) != null ? snapshot.child("total_soal").getValue(Integer.class) : 0;
                     int currentPoints = snapshot.child("point").getValue(Integer.class) != null ? snapshot.child("point").getValue(Integer.class) : 0;
                     int currentXP = snapshot.child("xp").getValue(Integer.class) != null ? snapshot.child("xp").getValue(Integer.class) : 0;
+                    int currentLevel = snapshot.child("level").getValue(Integer.class) != null ? snapshot.child("level").getValue(Integer.class) : 1;
 
                     int newTotalSoal = currentTotalSoal + (correctAnswers + incorrectAnswers);
                     int newPoints = currentPoints + totalPoints;
@@ -135,7 +137,9 @@ public class QuizResultActivity extends AppCompatActivity {
 
                     userRef.child("total_soal").setValue(newTotalSoal);
                     userRef.child("point").setValue(newPoints);
-                    userRef.child("xp").setValue(newXP);
+
+                    // Update level and XP
+                    LevelHandler.updateLevelInFirebase(currentUserId, newXP, currentLevel);
 
                     // Get the next quiz history ID
                     DatabaseReference quizHistoryRef = userRef.child("quiz_history");
