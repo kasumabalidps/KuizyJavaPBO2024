@@ -41,7 +41,7 @@ public class QuizResultActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState); // Corrected syntax here
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz_result);
 
         // Enable edge-to-edge content
@@ -128,7 +128,6 @@ public class QuizResultActivity extends AppCompatActivity {
                     int currentTotalSoal = snapshot.child("total_soal").getValue(Integer.class) != null ? snapshot.child("total_soal").getValue(Integer.class) : 0;
                     int currentPoints = snapshot.child("point").getValue(Integer.class) != null ? snapshot.child("point").getValue(Integer.class) : 0;
                     int currentXP = snapshot.child("xp").getValue(Integer.class) != null ? snapshot.child("xp").getValue(Integer.class) : 0;
-                    int currentLevel = snapshot.child("level").getValue(Integer.class) != null ? snapshot.child("level").getValue(Integer.class) : 1;
 
                     int newTotalSoal = currentTotalSoal + (correctAnswers + incorrectAnswers);
                     int newPoints = currentPoints + totalPoints;
@@ -136,39 +135,25 @@ public class QuizResultActivity extends AppCompatActivity {
 
                     userRef.child("total_soal").setValue(newTotalSoal);
                     userRef.child("point").setValue(newPoints);
-
-                    // Update the user's level and remaining XP in Firebase
-                    LevelHandler.updateLevelInFirebase(currentUserId, newXP);
-
-                    // Get the next quiz history ID
-                    DatabaseReference quizHistoryRef = userRef.child("quiz_history");
-                    quizHistoryRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot historySnapshot) {
-                            long nextId = 1;
-                            for (DataSnapshot ds : historySnapshot.getChildren()) {
-                                long id = Long.parseLong(ds.getKey());
-                                if (id >= nextId) {
-                                    nextId = id + 1;
-                                }
-                            }
-                            DatabaseReference newQuizHistoryRef = quizHistoryRef.child(String.valueOf(nextId));
-                            newQuizHistoryRef.child("name").setValue(quizName);
-                            newQuizHistoryRef.child("tanggal").setValue(currentDate);
-                            newQuizHistoryRef.child("point_ditambahkan").setValue(totalPoints);
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-                            // Handle error if needed
+                    userRef.child("xp").setValue(newXP).addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            // Update user level and XP in Firebase using LevelHandler
+                            LevelHandler.updateLevelInFirebase(currentUserId, newXP);
                         }
                     });
+
+                    // Save quiz history
+                    DatabaseReference quizHistoryRef = userRef.child("quiz_history");
+                    DatabaseReference newQuizHistoryRef = quizHistoryRef.push();
+                    newQuizHistoryRef.child("name").setValue(quizName);
+                    newQuizHistoryRef.child("tanggal").setValue(currentDate);
+                    newQuizHistoryRef.child("point_ditambahkan").setValue(totalPoints);
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                // Handle error if needed
+                Toast.makeText(QuizResultActivity.this, "Failed to save result data: " + error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
