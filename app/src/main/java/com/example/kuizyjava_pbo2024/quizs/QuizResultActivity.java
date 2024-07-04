@@ -22,6 +22,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.MutableData;
+import com.google.firebase.database.Transaction;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
@@ -143,11 +145,12 @@ public class QuizResultActivity extends AppCompatActivity {
                     });
 
                     // Save quiz history
-                    DatabaseReference quizHistoryRef = userRef.child("quiz_history");
-                    DatabaseReference newQuizHistoryRef = quizHistoryRef.push();
-                    newQuizHistoryRef.child("name").setValue(quizName);
-                    newQuizHistoryRef.child("tanggal").setValue(currentDate);
-                    newQuizHistoryRef.child("point_ditambahkan").setValue(totalPoints);
+                    incrementAndGetQuizHistoryIndex(userRef, quizHistoryIndex -> {
+                        DatabaseReference quizHistoryRef = userRef.child("quiz_history").child(String.valueOf(quizHistoryIndex));
+                        quizHistoryRef.child("name").setValue(quizName);
+                        quizHistoryRef.child("tanggal").setValue(currentDate);
+                        quizHistoryRef.child("point_ditambahkan").setValue(totalPoints);
+                    });
                 }
             }
 
@@ -156,5 +159,35 @@ public class QuizResultActivity extends AppCompatActivity {
                 Toast.makeText(QuizResultActivity.this, "Failed to save result data: " + error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void incrementAndGetQuizHistoryIndex(DatabaseReference userRef, OnQuizHistoryIndexGeneratedListener listener) {
+        DatabaseReference quizHistoryIndexRef = userRef.child("quiz_history_index");
+        quizHistoryIndexRef.runTransaction(new Transaction.Handler() {
+            @NonNull
+            @Override
+            public Transaction.Result doTransaction(@NonNull MutableData currentData) {
+                Integer currentIndex = currentData.getValue(Integer.class);
+                if (currentIndex == null) {
+                    currentIndex = 0;
+                }
+                currentIndex += 1;
+                currentData.setValue(currentIndex);
+                return Transaction.success(currentData);
+            }
+
+            @Override
+            public void onComplete(DatabaseError error, boolean committed, DataSnapshot currentData) {
+                if (error == null && committed) {
+                    listener.onIndexGenerated(currentData.getValue(Integer.class));
+                } else {
+                    Toast.makeText(QuizResultActivity.this, "Failed to generate quiz history index.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
+    interface OnQuizHistoryIndexGeneratedListener {
+        void onIndexGenerated(int quizHistoryIndex);
     }
 }

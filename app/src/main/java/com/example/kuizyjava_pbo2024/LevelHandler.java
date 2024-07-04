@@ -61,7 +61,7 @@ public class LevelHandler {
     }
 
     public static void setProgressWidth(ImageView progressBar, int progress) {
-        int maxWidth = 362;  // width in dp
+        int maxWidth = 361;  // width in dp
         int progressWidth = (int) ((progress / 100.0) * maxWidth);
 
         ViewGroup.LayoutParams layoutParams = progressBar.getLayoutParams();
