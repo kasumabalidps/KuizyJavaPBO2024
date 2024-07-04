@@ -15,6 +15,9 @@
         android:theme="@style/Theme.KuizyJavaPBO2024"
         tools:targetApi="31">
         <activity
+            android:name=".PeraturanActivity"
+            android:exported="false" />
+        <activity
             android:name=".quizs.QuizHistoryActivity"
             android:exported="false" />
         <activity

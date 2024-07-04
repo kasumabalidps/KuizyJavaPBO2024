@@ -27,4 +27,5 @@
     <string name="main_lagi">Main Lagi</string>
     <string name="hasil_akhir">Hasil Akhir</string>
     <string name="aktivitas_terakhir">Aktivitas Terakhir</string>
+    <string name="_1_kuis_menampilkan_soal_dan_jawaban_secara_acak_n_n2_jawaban_benar_mendapat_10_poin_salah_mendapat_0_poin_n_n3_level_naik_dengan_exp_point_yang_memiliki_batasan_tertentu_n_n4_exp_point_diperoleh_dari_jumlah_jawaban_benar_semakin_sering_menjawab_benar_semakin_banyak_exp_point_n_n5_hasil_kuis_disimpan_pada_aktivitas_terakhir">1. Kuis menampilkan soal dan jawaban secara acak.\n\n2. Jawaban benar mendapat 10 poin, salah mendapat 0 poin.\n\n3. Level naik dengan exp point yang memiliki batasan tertentu.\n\n4. Exp point diperoleh dari jumlah jawaban benar. Semakin sering menjawab benar, semakin banyak exp point.\n\n5. Hasil kuis disimpan pada aktivitas terakhir.</string>
 </resources>

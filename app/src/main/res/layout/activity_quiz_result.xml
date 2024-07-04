@@ -150,8 +150,6 @@
                     android:layout_marginBottom="8dp"/>
             </LinearLayout>
         </FrameLayout>
-
-
         <Button
             android:id="@+id/button_mainlagi"
             android:layout_width="match_parent"
