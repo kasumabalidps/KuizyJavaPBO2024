@@ -6,4 +6,8 @@
     <item name="button_option_2" type="id" />
     <item name="button_option_3" type="id" />
     <item name="button_option_4" type="id" />
+    <item name="save_password" type="id" />
+    <item name="old_password" type="id" />
+    <item name="new_password" type="id" />
+    <item name="confirm_new_password" type="id" />
 </resources>

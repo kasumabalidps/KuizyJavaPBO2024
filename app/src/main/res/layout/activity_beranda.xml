@@ -306,7 +306,7 @@
 
                 <!--Button Boongan-->
                 <ImageButton
-                    android:id="@+id/btnGantiPassword_Beranda"
+                    android:id="@+id/btnGantiPassword"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="#00000000"
@@ -319,7 +319,7 @@
                     android:gravity="center_horizontal|center_vertical"
                     android:orientation="vertical">
 
-                    <ImageButton
+                    <ImageView
                         android:id="@+id/leftImageButton5"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
