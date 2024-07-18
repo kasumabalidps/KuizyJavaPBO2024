@@ -1,5 +1,6 @@
 package com.example.kuizyjava_pbo2024;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
@@ -58,6 +59,7 @@ public class BerandaActivity extends AppCompatActivity {
         ImageButton btnAktivitas = findViewById(R.id.btnAktivitas);
         ImageButton btnPeraturan = findViewById(R.id.btnPeraturan);
         ImageButton btnKeluar = findViewById(R.id.btnKeluar);
+        ImageButton btnGantiPassword = findViewById(R.id.btnGantiPassword);
 
         btnMulaiQuiz.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,6 +74,15 @@ public class BerandaActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(BerandaActivity.this, QuizHistoryActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        btnGantiPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(BerandaActivity.this, GantiPasswordActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -154,6 +165,7 @@ public class BerandaActivity extends AppCompatActivity {
             DatabaseReference userRef = mDatabase.child("users").child(currentUserId);
 
             userRef.addValueEventListener(new ValueEventListener() {
+                @SuppressLint("SetTextI18n")
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     if (dataSnapshot.exists()) {
@@ -175,7 +187,7 @@ public class BerandaActivity extends AppCompatActivity {
                                     .load(profileUrl)
                                     .into(profileImageView);
                         } else {
-                            profileImageView.setImageResource(R.drawable.default_profile); // Fallback image
+                            profileImageView.setImageResource(R.drawable.default_profile);
                         }
 
                         if (levelProgress != null) {

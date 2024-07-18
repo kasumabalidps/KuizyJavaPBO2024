@@ -71,7 +71,7 @@
         android:padding="10dp"
         android:textColor="@color/black"
         android:textSize="15sp"
-        android:inputType="text"
+        android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
