@@ -135,6 +135,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+                <!--Button Boongan-->
+                <ImageButton
+                    android:id="@+id/btnMulaiQuizIPA"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#00000000"
+                    android:contentDescription="@string/mulaiquiz" />
+
                 <ImageButton
                     android:id="@+id/icon_button_ipa"
                     android:layout_width="55dp"
@@ -227,6 +235,14 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+
+                <!--Button Boongan-->
+                <ImageButton
+                    android:id="@+id/btnMulaiQuizPPKN"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#00000000"
+                    android:contentDescription="@string/mulaiquiz" />
 
                 <ImageButton
                     android:id="@+id/icon_button_ppkn"
