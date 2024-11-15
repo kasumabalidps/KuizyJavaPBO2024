@@ -16,6 +16,18 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class WelcomeActivity extends AppCompatActivity {
 
+    /**
+     * Initializes the WelcomeActivity and sets up the user interface.
+     * 
+     * This method performs the following tasks:
+     * - Enables edge-to-edge content display
+     * - Sets up fullscreen mode and hides system UI elements
+     * - Hides the action bar if present
+     * - Applies window insets to the main view
+     * - Sets up a click listener for the welcome button to navigate to the LoginActivity
+     *
+     * @param savedInstanceState Bundle containing the activity's previously saved state, or null if there was none
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
