@@ -34,6 +34,22 @@ public class LoginActivity extends AppCompatActivity {
     private EditText etUsername, etPassword;
     private DatabaseReference database;
 
+    /**
+     * Initializes the LoginActivity, sets up the UI components, and configures user interaction.
+     * 
+     * This method is called when the activity is starting. It handles the following tasks:
+     * - Enables edge-to-edge content display
+     * - Sets up the activity layout
+     * - Initializes UI components (EditText fields for username and password, login button)
+     * - Configures Firebase database reference
+     * - Sets up click listener for the login button
+     * - Configures system UI visibility for fullscreen mode
+     * - Applies window insets for proper layout adjustment
+     * 
+     * @param savedInstanceState If the activity is being re-initialized after previously being
+     *                           shut down, this Bundle contains the data it most recently
+     *                           supplied in onSaveInstanceState(Bundle). Otherwise, it is null.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,6 +110,18 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Attempts to log in a user by validating their credentials against a database.
+     * 
+     * This method queries a Firebase Realtime Database to check if the provided username exists
+     * and if the associated password matches the input. Upon successful authentication,
+     * it stores the user ID in preferences, displays a success message, and navigates to
+     * the BerandaActivity. If authentication fails, it displays an error message.
+     * 
+     * @param username The username of the user attempting to log in
+     * @param password The password provided by the user for authentication
+     * @throws DatabaseException If there's an error accessing or reading from the database
+     */
     private void loginUser(String username, String password) {
         database.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
