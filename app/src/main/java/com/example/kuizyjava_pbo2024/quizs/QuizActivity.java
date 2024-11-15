@@ -42,6 +42,23 @@ public class QuizActivity extends AppCompatActivity {
     private String quizName;
     private String category;
 
+    /**
+     * Initializes the Quiz activity and sets up the user interface.
+     * 
+     * This method is called when the activity is starting. It performs the following tasks:
+     * - Sets up the activity layout
+     * - Configures edge-to-edge content display based on the Android version
+     * - Hides the action bar if present
+     * - Initializes UI elements
+     * - Retrieves quiz information from the intent
+     * - Validates quiz data and finishes the activity if data is missing
+     * - Sets up the Firebase database reference
+     * - Initiates loading of quiz questions
+     * 
+     * @param savedInstanceState If the activity is being re-initialized after previously being 
+     *                           shut down, this Bundle contains the data it most recently supplied 
+     *                           in onSaveInstanceState(Bundle). Otherwise, it is null.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,6 +108,17 @@ public class QuizActivity extends AppCompatActivity {
         loadQuestions();
     }
 
+    /**
+     * Loads quiz questions from the database and populates the questions list.
+     * 
+     * This method fetches question data from a Firebase Realtime Database using a
+     * single value event listener. It populates the questions list with Question
+     * objects, sets the total number of questions, and initiates the display of
+     * the first question. If no questions are found, it shows a toast message and
+     * finishes the activity.
+     * 
+     * @throws DatabaseException if there is an error while reading from the database
+     */
     private void loadQuestions() {
         questions = new ArrayList<>();
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -118,6 +146,15 @@ public class QuizActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Displays the current question and sets up answer buttons.
+     * 
+     * This method updates the UI with the current question's text and answer options.
+     * It also sets up click listeners for each answer button to check the selected answer.
+     * If there are no more questions, it shows the quiz result.
+     * 
+     * @throws IndexOutOfBoundsException if currentQuestionIndex is invalid
+     */
     private void displayQuestion() {
         if (currentQuestionIndex < totalQuestions) {
             Question question = questions.get(currentQuestionIndex);
@@ -137,6 +174,16 @@ public class QuizActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Checks the user's selected answer against the correct answer for the current question.
+     * 
+     * This method compares the selected option with the correct answer for the given question.
+     * It displays a toast message indicating whether the answer is correct or incorrect,
+     * updates the score counters, increments the current question index, and displays the next question.
+     * 
+     * @param question The current Question object containing the correct answer
+     * @param selectedOption The user's selected answer option as a String
+     */
     private void checkAnswer(Question question, String selectedOption) {
         if (question.getCorrectAnswer().equals(selectedOption)) {
             Toast.makeText(this, "Jawaban benar!", Toast.LENGTH_SHORT).show();
