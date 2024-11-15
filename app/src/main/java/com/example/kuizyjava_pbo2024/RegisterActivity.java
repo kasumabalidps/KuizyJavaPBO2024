@@ -32,6 +32,19 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText etUsername, etEmail, etPassword, etConfirmPassword;
     private DatabaseReference database;
 
+    /**
+     * Initializes the RegisterActivity, sets up the UI components, and configures user registration functionality.
+     * 
+     * This method performs the following tasks:
+     * - Enables edge-to-edge content display
+     * - Sets up the activity layout and initializes UI components
+     * - Configures Firebase database reference
+     * - Sets up click listener for the register button
+     * - Implements full-screen mode and hides the action bar
+     * - Applies window insets for proper layout adjustment
+     * 
+     * @param savedInstanceState Bundle containing the activity's previously saved state, if any
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -97,6 +110,18 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Registers a new user in the database with the provided information.
+     * 
+     * This method creates a new user entry in the Firebase Realtime Database
+     * with the given email, username, and password. It also initializes
+     * additional user data such as level, experience points, and quiz history.
+     * Upon successful registration, the user is redirected to the login screen.
+     * 
+     * @param email The email address of the user to be registered
+     * @param username The chosen username for the new user
+     * @param password The password for the new user account
+     */
     private void registerUser(String email, String username, String password) {
         DatabaseReference usersChildName = database.child(username);
 
