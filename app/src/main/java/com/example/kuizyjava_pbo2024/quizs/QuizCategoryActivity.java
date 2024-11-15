@@ -20,6 +20,19 @@ import com.example.kuizyjava_pbo2024.quizs.quizList.QuizListPPKNActivity;
 
 public class QuizCategoryActivity extends AppCompatActivity {
 
+    /**
+     * Initializes the activity, sets up the UI, and configures button click listeners for quiz categories.
+     * 
+     * This method performs the following tasks:
+     * - Enables edge-to-edge content display
+     * - Sets the content view to the quiz category layout
+     * - Initializes buttons for navigation and quiz category selection
+     * - Sets up click listeners for each button to navigate to the appropriate activity
+     * - Hides the action bar
+     * - Ensures no padding is applied to the root layout
+     * 
+     * @param savedInstanceState A Bundle containing the activity's previously saved state, or null if there was none
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

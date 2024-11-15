@@ -30,6 +30,22 @@ public class QuizListPPKNActivity extends AppCompatActivity {
 
     private static final String TAG = "QuizListPPKN";
 
+    /**
+     * Initializes the QuizListPPKNActivity, sets up the UI, and loads quiz data from Firebase.
+     * 
+     * This method performs the following tasks:
+     * - Sets the content view to the activity_quiz_list_ppknactivity layout
+     * - Enables edge-to-edge content display
+     * - Hides the system UI (status and navigation bars)
+     * - Hides the action bar if present
+     * - Sets up a back button listener to return to the QuizCategoryActivity
+     * - Configures window insets to ensure no padding is applied to the root layout
+     * - Retrieves quiz data from Firebase and populates the UI with quiz information
+     *
+     * @param savedInstanceState If the activity is being re-initialized after previously being
+     *                           shut down, this Bundle contains the data it most recently supplied
+     *                           in onSaveInstanceState(Bundle). Otherwise, it is null.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -97,6 +113,16 @@ public class QuizListPPKNActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Adds a quiz item to the grid layout in the user interface.
+     * 
+     * This method inflates a quiz item layout, sets its content with the provided quiz information,
+     * and adds it to the grid layout. It also sets up a click listener for the quiz start button.
+     * 
+     * @param quizId The unique identifier for the quiz
+     * @param quizName The name of the quiz to be displayed
+     * @param questionCount The number of questions in the quiz
+     */
     private void addQuizToGridLayout(String quizId, String quizName, long questionCount) {
         GridLayout gridLayout = findViewById(R.id.grid_layout);
 

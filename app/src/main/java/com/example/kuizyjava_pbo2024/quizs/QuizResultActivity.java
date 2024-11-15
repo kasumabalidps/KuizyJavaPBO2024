@@ -40,6 +40,20 @@ public class QuizResultActivity extends AppCompatActivity {
     private int totalPoints;
     private int totalXP;
 
+    /**
+     * Initializes the QuizResultActivity, sets up the UI, retrieves and displays quiz results,
+     * and saves the result to Firebase.
+     * 
+     * This method performs the following tasks:
+     * - Sets up edge-to-edge content for modern Android versions
+     * - Hides the system UI and action bar for a fullscreen experience
+     * - Initializes UI components and sets up click listeners
+     * - Retrieves quiz result data from the intent
+     * - Calculates and displays total points and XP
+     * - Saves the quiz result to Firebase
+     * 
+     * @param savedInstanceState Bundle containing the activity's previously saved state, or null if there was none
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -109,6 +123,15 @@ public class QuizResultActivity extends AppCompatActivity {
         findViewById(R.id.button_mainlagi).setOnClickListener(v -> finish());
     }
 
+    /**
+     * Saves the quiz result to Firebase Realtime Database for the current user.
+     * This method updates the user's total questions answered, points, and XP,
+     * as well as saves the quiz history. It also updates the user's level based
+     * on the new XP.
+     * 
+     * @param currentDate The current date when the quiz result is being saved
+     * @throws RuntimeException if there's an error while saving data to Firebase
+     */
     private void saveResultToFirebase(String currentDate) {
         // Retrieve the current user ID from SharedPreferences
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
@@ -160,6 +183,16 @@ public class QuizResultActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Increments the quiz history index for a user and returns the new value.
+     * 
+     * This method performs a transaction on the user's quiz history index in the database.
+     * It atomically increments the index and returns the new value through a callback.
+     * If the index doesn't exist, it initializes it to 1.
+     * 
+     * @param userRef The DatabaseReference pointing to the user's data in the database
+     * @param listener The callback listener to receive the generated index
+     */
     private void incrementAndGetQuizHistoryIndex(DatabaseReference userRef, OnQuizHistoryIndexGeneratedListener listener) {
         DatabaseReference quizHistoryIndexRef = userRef.child("quiz_history_index");
         quizHistoryIndexRef.runTransaction(new Transaction.Handler() {
@@ -187,6 +220,11 @@ public class QuizResultActivity extends AppCompatActivity {
     }
 
     interface OnQuizHistoryIndexGeneratedListener {
+        /**
+         * Called when a quiz history index is generated.
+         * 
+         * @param quizHistoryIndex The index generated for the quiz history
+         */
         void onIndexGenerated(int quizHistoryIndex);
     }
 }

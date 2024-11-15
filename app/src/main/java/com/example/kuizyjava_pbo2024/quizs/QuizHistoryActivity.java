@@ -40,6 +40,19 @@ public class QuizHistoryActivity extends AppCompatActivity {
     private TextView totalPointsTextView;
     private TextView totalSoalTextView;
 
+    /**
+     * Initializes the QuizHistoryActivity, sets up the UI, and loads quiz history.
+     * This method is called when the activity is first created. It performs the following tasks:
+     * - Enables edge-to-edge content display
+     * - Sets up the activity's layout
+     * - Configures system UI visibility for immersive mode
+     * - Sets up a back button with navigation functionality
+     * - Initializes UI components for displaying quiz history
+     * - Loads and displays the user's quiz history
+     *
+     * @param savedInstanceState A Bundle containing the activity's previously saved state,
+     *                           or null if there was no saved state. It's not used in this implementation.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,6 +102,22 @@ public class QuizHistoryActivity extends AppCompatActivity {
         loadQuizHistory();
     }
 
+    /**
+     * Loads and displays the quiz history for the current user.
+     * 
+     * This method retrieves the current user's ID from SharedPreferences,
+     * fetches the user's quiz history from Firebase Realtime Database,
+     * and updates the UI with the total points, total questions answered,
+     * and a sorted list of quiz history items.
+     * 
+     * If the user ID is not found, it displays a toast message and returns.
+     * 
+     * The quiz history items are sorted by their key in descending order
+     * before being added to the GridLayout.
+     * 
+     * @throws SecurityException if the app doesn't have permission to access SharedPreferences
+     * @throws DatabaseException if there's an error accessing the Firebase database
+     */
     private void loadQuizHistory() {
         // Retrieve the current user ID from SharedPreferences
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
@@ -147,6 +176,16 @@ public class QuizHistoryActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Adds a quiz history item to the grid layout.
+     * 
+     * This method inflates a layout for a quiz history item, populates it with
+     * the provided quiz information, and adds it to the grid layout.
+     * 
+     * @param quizName The name of the quiz to be displayed
+     * @param pointDitambahkan The number of points added from the quiz
+     * @param tanggal The date when the quiz was taken
+     */
     private void addHistoryItemToGridLayout(String quizName, int pointDitambahkan, String tanggal) {
         View historyItem = getLayoutInflater().inflate(R.layout.quiz_history_item, gridLayout, false);
         TextView textQuiz = historyItem.findViewById(R.id.text_quiz);

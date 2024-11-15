@@ -24,6 +24,22 @@ public class PeraturanActivity extends AppCompatActivity {
     private CheckBox checkBox;
     private Button btnSetuju;
 
+    /**
+     * Initializes the activity, sets up the UI, and configures user interactions.
+     * 
+     * This method is called when the activity is first created. It performs the following tasks:
+     * - Sets the content view to the activity_peraturan layout
+     * - Enables edge-to-edge content display
+     * - Hides the system UI (status and navigation bars)
+     * - Hides the action bar if present
+     * - Sets up window insets listener for proper layout adjustment
+     * - Initializes UI elements (checkbox and button)
+     * - Sets up click listener for the agreement button
+     * 
+     * @param savedInstanceState If the activity is being re-initialized after previously being 
+     *                           shut down, this Bundle contains the data it most recently 
+     *                           supplied in onSaveInstanceState(Bundle). Otherwise, it is null.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +82,19 @@ public class PeraturanActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Saves the user's agreement status to Firebase Realtime Database.
+     * 
+     * This method retrieves the current user ID from SharedPreferences,
+     * then updates the user's agreement status in the Firebase database.
+     * If successful, it displays a success message and navigates to the BerandaActivity.
+     * If unsuccessful, it displays an error message.
+     * 
+     * @param agreed A boolean indicating whether the user has agreed to the terms
+     * @return void This method does not return a value
+     * 
+     * @throws RuntimeException if the user ID is not found in SharedPreferences
+     */
     private void saveUserAgreementToFirebase(boolean agreed) {
         // Retrieve the current user ID from SharedPreferences
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);

@@ -30,6 +30,17 @@ public class QuizListIPAActivity extends AppCompatActivity {
 
     private static final String TAG = "QuizListIPA";
 
+    /**
+     * Initializes the QuizListIPAActivity, setting up the UI and fetching quiz data.
+     * 
+     * This method performs the following tasks:
+     * - Sets up the activity's content view
+     * - Configures edge-to-edge display and hides system UI elements
+     * - Sets up a back button listener to return to the QuizCategoryActivity
+     * - Fetches quiz data from Firebase and populates the UI
+     * 
+     * @param savedInstanceState Bundle containing the activity's previously saved state, if any
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -97,6 +108,16 @@ public class QuizListIPAActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Adds a quiz item to the grid layout in the user interface.
+     * 
+     * This method inflates a quiz item layout, sets its content based on the provided quiz information,
+     * and adds it to the grid layout. It also sets up a click listener for starting the quiz.
+     * 
+     * @param quizId The unique identifier of the quiz
+     * @param quizName The name of the quiz to be displayed
+     * @param questionCount The number of questions in the quiz
+     */
     private void addQuizToGridLayout(String quizId, String quizName, long questionCount) {
         GridLayout gridLayout = findViewById(R.id.grid_layout);
 
