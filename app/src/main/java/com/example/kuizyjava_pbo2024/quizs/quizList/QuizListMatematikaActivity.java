@@ -28,6 +28,17 @@ public class QuizListMatematikaActivity extends AppCompatActivity {
 
     private static final String TAG = "QuizListMatematika";
 
+    /**
+     * Initializes the QuizListMatematikaActivity, sets up the UI, and fetches quiz data from Firebase.
+     * 
+     * This method performs the following tasks:
+     * - Sets the content view for the activity
+     * - Configures edge-to-edge display and hides system UI elements
+     * - Sets up a back button with navigation functionality
+     * - Fetches quiz data from Firebase and populates the UI
+     *
+     * @param savedInstanceState Bundle containing the activity's previously saved state, or null if there was none
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,6 +106,17 @@ public class QuizListMatematikaActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Adds a quiz item to the GridLayout in the user interface.
+     * 
+     * This method inflates a quiz item layout, sets its content based on the provided
+     * quiz information, and adds it to the GridLayout. It also sets up a click listener
+     * for the quiz start button.
+     * 
+     * @param quizId The unique identifier of the quiz
+     * @param quizName The name of the quiz to be displayed
+     * @param questionCount The number of questions in the quiz
+     */
     private void addQuizToGridLayout(String quizId, String quizName, long questionCount) {
         GridLayout gridLayout = findViewById(R.id.grid_layout);
 
